@@ -1,9 +1,10 @@
-import Layout from "../components/Layout";
+import Plans from "@/components/Pages/Plans";
+import Layout from "../components/common/Layout";
 
 export default async function HomePage() {
   return (
     <Layout>
-      <h1 className="text-3xl font-bold">Smile Up Page contents in here</h1>
+      <Plans />
     </Layout>
   );
 }
