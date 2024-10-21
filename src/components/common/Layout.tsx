@@ -14,7 +14,7 @@ export default function Layout({ children }: LayoutProps) {
         </div>
       </header>
 
-      <main className="container px-4 py-8">{children}</main>
+      <main className="container px-2 py-3">{children}</main>
     </div>
   );
 }

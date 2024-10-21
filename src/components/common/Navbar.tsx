@@ -57,7 +57,7 @@ export default function Navbar() {
 
         <li className="relative flex flex-col items-center">
           <Link
-            href="/missions"
+            href="/profile"
             className="flex flex-col items-center space-y-1"
           >
             <div className="transition-transform duration-300">
