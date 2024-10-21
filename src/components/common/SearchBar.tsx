@@ -20,7 +20,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   return (
-    <div className="flex items-center border-b-2 border-teal-500 py-2">
+    <div className="flex items-center border-b-2 border-[#6e34a7] py-2">
       <input
         className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
         type="text"
@@ -29,7 +29,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         onChange={handleInputChange}
       />
       <button
-        className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+        className="flex-shrink-0 bg-[#6e34a7] hover:bg-teal-700 border-[#6e34a7] hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
         type="button"
         onClick={handleSearch}
       >
