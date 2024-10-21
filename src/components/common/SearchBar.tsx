@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 
 interface SearchBarProps {
   placeholder?: string;
   onSearch: (query: string) => void;
+  isLoading?: boolean;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
   placeholder = "Search...",
   onSearch,
+  isLoading = false,
 }) => {
   const [query, setQuery] = useState("");
 
@@ -16,24 +19,37 @@ const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   const handleSearch = () => {
-    onSearch(query);
+    if (query.trim()) {
+      onSearch(query);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
   };
 
   return (
-    <div className="flex items-center border-b-2 border-[#6e34a7] py-2">
+    <div className="flex items-center border-b-2 border-[#6e34a7] py-2 mb-4 rounded-md shadow-md">
       <input
-        className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+        className="appearance-none bg-[#262450] w-full text-white placeholder-gray-500 mr-3 px-3 py-3 leading-tight focus:outline-none rounded-full"
         type="text"
         placeholder={placeholder}
         value={query}
         onChange={handleInputChange}
+        onKeyDown={handleKeyPress}
+        disabled={isLoading}
       />
       <button
-        className="flex-shrink-0 bg-[#6e34a7] hover:bg-teal-700 border-[#6e34a7] hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+        className={`flex-shrink-0 bg-[#6e34a7] hover:bg-[#532586] border-none text-sm text-white py-3 px-4 rounded-full transition duration-300 ${
+          isLoading ? "cursor-not-allowed opacity-50" : ""
+        }`}
         type="button"
         onClick={handleSearch}
+        disabled={isLoading}
       >
-        Search
+        <FaSearch className="text-lg" />
       </button>
     </div>
   );

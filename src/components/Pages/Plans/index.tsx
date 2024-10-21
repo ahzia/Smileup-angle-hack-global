@@ -3,6 +3,7 @@ import MyProfile from "@/components/common/MyProfile";
 import SearchBar from "@/components/common/SearchBar";
 import PlansCategories from "./PlansCategories";
 import { data } from "../../../../lib/plans";
+import { userData } from "../../../../lib/user";
 
 export default function Plans() {
   const handleSearch = (query: string) => {
@@ -11,8 +12,7 @@ export default function Plans() {
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold">Plans</h1>
-      <MyProfile />
+      <MyProfile user={userData} />
       <SearchBar onSearch={handleSearch} />
       <PlansCategories categories={data.categories} />
     </div>
