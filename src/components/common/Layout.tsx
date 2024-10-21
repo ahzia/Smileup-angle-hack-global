@@ -7,7 +7,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col items-baseline bg-slate-900">
+    <div className="min-h-screen flex flex-col items-baseline">
       <header>
         <div className="container mx-auto">
           <Navbar />

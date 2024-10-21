@@ -6,7 +6,7 @@ interface PlanCardProps {
 
 export default function PlanCard({ plan }: PlanCardProps) {
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md space-y-2">
+    <div className="bg-[#282C34] p-4 rounded-lg shadow-md space-y-2">
       <h3 className="text-xl font-bold">{plan.name}</h3>
       <p>{plan.description}</p>
       <p className="text-sm text-gray-600">
@@ -24,8 +24,8 @@ export default function PlanCard({ plan }: PlanCardProps) {
         Participants: {plan.participants}/{plan.max_participants}
       </p>
       <button
-        className={`p-2 text-white ${
-          plan.is_free ? "bg-teal-500" : "bg-gray-500"
+        className={`p-2 text-[#E5E5E5] ${
+          plan.is_free ? "bg-[#9370DB]" : "bg-gray-500"
         } rounded-md`}
       >
         {plan.is_free ? "Join for Free" : "Paid Event"}
