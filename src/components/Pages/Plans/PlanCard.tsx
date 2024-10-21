@@ -1,4 +1,5 @@
 import { Plan } from "@/models/Plan";
+import Image from "next/image";
 
 interface PlanCardProps {
   plan: Plan;
@@ -7,11 +8,8 @@ interface PlanCardProps {
 export default function PlanCard({ plan }: PlanCardProps) {
   return (
     <div className="bg-[#282C34] p-4 rounded-lg shadow-md space-y-2">
+      <Image src={plan.image} alt={plan.name} />
       <h3 className="text-xl font-bold">{plan.name}</h3>
-      <p>{plan.description}</p>
-      <p className="text-sm text-gray-600">
-        {plan.date} | {plan.time}
-      </p>
       <p className="text-sm text-gray-600">Location: {plan.location}</p>
       <p
         className={`text-sm ${
@@ -23,13 +21,9 @@ export default function PlanCard({ plan }: PlanCardProps) {
       <p className="text-sm text-gray-600">
         Participants: {plan.participants}/{plan.max_participants}
       </p>
-      <button
-        className={`p-2 text-[#E5E5E5] ${
-          plan.is_free ? "bg-[#9370DB]" : "bg-gray-500"
-        } rounded-md`}
-      >
+      <p className="text-sm text-gray-600">
         {plan.is_free ? "Join for Free" : "Paid Event"}
-      </button>
+      </p>
     </div>
   );
 }

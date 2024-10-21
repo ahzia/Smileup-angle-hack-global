@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 export interface Plan {
   plan_id: number;
   name: string;
@@ -12,4 +13,5 @@ export interface Plan {
   max_participants: number;
   is_free: boolean;
   category: string;
+  image: StaticImageData;
 }
