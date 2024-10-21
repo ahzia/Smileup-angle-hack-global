@@ -11,7 +11,7 @@ export default function Plans() {
   };
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto pt-5 pb-14">
       <MyProfile user={userData} />
       <SearchBar onSearch={handleSearch} />
       <PlansCategories categories={data.categories} />
