@@ -8,7 +8,7 @@ interface PlanCardProps {
 
 export default function PlanCard({ plan }: PlanCardProps) {
   return (
-    <div className="bg-[#282C34] p-4 rounded-lg shadow-md space-y-2 h-full flex flex-col justify-between">
+    <div className="bg-[#1E212D] p-4 rounded-lg shadow-md space-y-2 h-full flex flex-col justify-between transition-transform duration-200 hover:scale-105">
       <Image
         src={plan.image}
         alt={plan.name}
@@ -22,9 +22,7 @@ export default function PlanCard({ plan }: PlanCardProps) {
         </div>
         <div className="flex items-center space-x-1">
           <FiSmile
-            className={`${
-              plan.smiles >= 0 ? "text-green-500" : "text-red-500"
-            }`}
+            className={plan.smiles >= 0 ? "text-green-500" : "text-red-500"}
           />
           <p className="text-sm">
             Smiles:{" "}
