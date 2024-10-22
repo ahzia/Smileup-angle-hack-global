@@ -14,4 +14,5 @@ export interface Plan {
   is_free: boolean;
   category: string;
   image: StaticImageData;
+  price?: string;
 }

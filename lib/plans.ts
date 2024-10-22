@@ -8,9 +8,9 @@ import BoardGames from "../images/board-games.jpg";
 import KaraokeNight from "../images/karoke.jpg";
 import WeekendBrunch from "../images/kitchen.jpg";
 import CyclingAdventure from "../images/cycling.jpg";
-// import ChinatownTour from "../images/chinatown-tour.jpg";
-// import HawkerCenterTour from "../images/hawker-center.jpg";
-// import LocalCoffeeWorkshop from "../images/local-coffee.jpg";
+import ChinatownTour from "../images/ChinatownTour.jpg";
+import HawkerCenterTour from "../images/HawkerCenterTour.jpg";
+import LocalCoffeeWorkshop from "../images/LocalCoffeeWorkshop.jpg";
 
 export const data = {
   community: {
@@ -96,7 +96,7 @@ export const data = {
           is_free: false,
           price: "$30",
           category: "Cultural Exploration",
-          // image: ChinatownTour,
+          image: ChinatownTour,
         },
         {
           plan_id: 5,
@@ -114,7 +114,7 @@ export const data = {
           is_free: false,
           price: "$50",
           category: "Food & Beverage",
-          // image: HawkerCenterTour,
+          image: HawkerCenterTour,
         },
         {
           plan_id: 6,
@@ -172,7 +172,7 @@ export const data = {
           is_free: false,
           price: "$20",
           category: "Food & Beverage",
-          // image: LocalCoffeeWorkshop,
+          image: LocalCoffeeWorkshop,
         },
       ],
     },

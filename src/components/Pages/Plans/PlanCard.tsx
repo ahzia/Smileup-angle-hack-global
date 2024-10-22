@@ -8,6 +8,7 @@ import {
 } from "react-icons/md";
 import Modal from "@/components/common/Modal";
 import { Plan } from "@/models/Plan";
+import Members from "@/components/common/Members";
 
 interface PlanCardProps {
   plan: Plan;
@@ -31,29 +32,21 @@ export default function PlanCard({ plan }: PlanCardProps) {
             alt={plan.name}
             className="w-full h-52 object-cover rounded-lg"
           />
-          {/* Price Badge */}
           <div
             className={`absolute top-2 left-2 bg-[#FFF] p-2 rounded-full shadow-lg border-4 ${
               plan.is_free ? "border-green-500" : "border-yellow-500"
             }`}
           >
             <div className="flex items-center space-x-1">
-              <MdAttachMoney
-                className={`text-lg ${
-                  plan.is_free ? "text-green-500" : "text-yellow-500"
-                }`}
-              />
               <p
                 className={`font-bold text-sm ${
                   plan.is_free ? "text-green-500" : "text-yellow-500"
                 }`}
               >
-                {plan.is_free ? "Free" : "Paid"}
+                {plan.is_free ? "Free" : plan?.price}
               </p>
             </div>
           </div>
-
-          {/* Smiles Count */}
           <div
             className={`absolute top-2 right-2 bg-[#FFF] p-2 rounded-full shadow-lg border-4 flex items-center space-x-1 ${
               plan.smiles >= 0 ? "border-green-500" : "border-red-500"
@@ -97,23 +90,22 @@ export default function PlanCard({ plan }: PlanCardProps) {
             alt={plan.name}
             className="w-full h-80 object-cover"
           />
-
-          {/* Plan Details */}
           <div className="p-6 flex-1 overflow-y-auto">
             <h3 className="text-3xl font-bold text-white mb-4">{plan.name}</h3>
-
-            {/* Description Section */}
+            <section className="mb-6">
+              <h4 className="text-xl font-semibold text-gray-200 mb-2">
+                Members
+              </h4>
+              <Members participants={plan.participants} />
+            </section>
             <section className="mb-6">
               <h4 className="text-xl font-semibold text-gray-200 mb-2">
                 Details
               </h4>
               <p className="text-gray-400">{plan.description}</p>
             </section>
-
-            {/* Location & Participants */}
             <section className="mb-6">
               <div className="flex justify-between items-center">
-                {/* Location */}
                 <div className="flex items-center space-x-2">
                   <MdLocationOn className="text-yellow-400 text-2xl" />
                   <div>
@@ -123,8 +115,6 @@ export default function PlanCard({ plan }: PlanCardProps) {
                     <p className="text-sm text-gray-400">{plan.location}</p>
                   </div>
                 </div>
-
-                {/* Participants */}
                 <div className="flex items-center space-x-2">
                   <MdPeople className="text-blue-400 text-2xl" />
                   <div>
@@ -138,8 +128,6 @@ export default function PlanCard({ plan }: PlanCardProps) {
                 </div>
               </div>
             </section>
-
-            {/* Price */}
             <section className="mb-6">
               <div className="flex items-center space-x-2">
                 <MdAttachMoney
@@ -154,8 +142,6 @@ export default function PlanCard({ plan }: PlanCardProps) {
                 </h5>
               </div>
             </section>
-
-            {/* Smiles */}
             <section className="mb-6">
               <div className="flex items-center space-x-2">
                 <MdEmojiEmotions
@@ -172,15 +158,8 @@ export default function PlanCard({ plan }: PlanCardProps) {
             </section>
           </div>
 
-          {/* Modal Footer */}
-          <div className="bg-[#2A2D3D] p-4 text-right sticky bottom-0 flex justify-between">
-            <button
-              onClick={closeModal}
-              className="text-gray-400 hover:text-red-500"
-            >
-              Cancel
-            </button>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+          <div className="bg-[#2A2D3D] p-4 sticky bottom-0 flex justify-center">
+            <button className="bg-[#6e34a7] text-white px-4 py-2 rounded-lg hover:bg-[#532586] transition-all duration-200">
               Join Plan
             </button>
           </div>
