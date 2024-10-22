@@ -29,10 +29,8 @@ export default function PlansCategories({ categories }: PlansCategoriesProps) {
               See More
             </Link>
           </div>
-
-          {/* Horizontal Scroll for Plan Cards */}
           <div className="overflow-x-auto">
-            <div className="flex space-x-4 min-h-[400px]">
+            <div className="flex space-x-4 min-h-[350px]">
               {category.plans.map((plan) => (
                 <div
                   key={plan.plan_id}
