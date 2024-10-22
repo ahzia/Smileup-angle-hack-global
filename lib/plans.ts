@@ -8,6 +8,9 @@ import BoardGames from "../images/board-games.jpg";
 import KaraokeNight from "../images/karoke.jpg";
 import WeekendBrunch from "../images/kitchen.jpg";
 import CyclingAdventure from "../images/cycling.jpg";
+// import ChinatownTour from "../images/chinatown-tour.jpg";
+// import HawkerCenterTour from "../images/hawker-center.jpg";
+// import LocalCoffeeWorkshop from "../images/local-coffee.jpg";
 
 export const data = {
   community: {
@@ -75,27 +78,46 @@ export const data = {
       ],
     },
     {
-      title: "Plans You May Be Interested In",
+      title: "Local Exploration Plans",
       plans: [
         {
           plan_id: 4,
-          name: "Cooking Workshop: Local Delights",
+          name: "Chinatown Heritage Tour",
           description:
-            "Learn how to prepare traditional Singaporean dishes at our cooking workshop.",
-          time: "4:00 PM - 6:00 PM",
+            "Explore the rich history and vibrant culture of Singapore's Chinatown district.",
+          time: "10:00 AM - 12:00 PM",
           date: "2024-10-22",
-          location: "Bond Kitchen",
+          location: "Meet at LYF Lobby",
           created_by: "AI",
-          smiles: -15,
+          smiles: 15,
           status: "Open",
-          participants: 5,
-          max_participants: 10,
+          participants: 10,
+          max_participants: 20,
           is_free: false,
-          category: "Food & Beverage",
-          image: CookingWorkshop,
+          price: "$30",
+          category: "Cultural Exploration",
+          // image: ChinatownTour,
         },
         {
           plan_id: 5,
+          name: "Hawker Center Food Tour",
+          description:
+            "Indulge in a guided food tour through some of Singapore’s famous hawker centers.",
+          time: "6:00 PM - 8:00 PM",
+          date: "2024-10-22",
+          location: "Meet at LYF Lobby",
+          created_by: "AI",
+          smiles: 20,
+          status: "Open",
+          participants: 12,
+          max_participants: 15,
+          is_free: false,
+          price: "$50",
+          category: "Food & Beverage",
+          // image: HawkerCenterTour,
+        },
+        {
+          plan_id: 6,
           name: "Photography Walk: Explore Singapore",
           description:
             "Capture the beauty of Singapore’s urban landscape with a guided photography walk.",
@@ -114,10 +136,51 @@ export const data = {
       ],
     },
     {
+      title: "Workshops & Experiences",
+      plans: [
+        {
+          plan_id: 7,
+          name: "Cooking Workshop: Local Delights",
+          description:
+            "Learn how to prepare traditional Singaporean dishes at our cooking workshop.",
+          time: "4:00 PM - 6:00 PM",
+          date: "2024-10-22",
+          location: "Bond Kitchen",
+          created_by: "AI",
+          smiles: 15,
+          status: "Open",
+          participants: 5,
+          max_participants: 10,
+          is_free: false,
+          price: "$40",
+          category: "Food & Beverage",
+          image: CookingWorkshop,
+        },
+        {
+          plan_id: 8,
+          name: "Local Coffee Brewing Workshop",
+          description:
+            "Discover the art of brewing local coffee and learn the traditional techniques.",
+          time: "10:00 AM - 12:00 PM",
+          date: "2024-10-23",
+          location: "Bond Kitchen",
+          created_by: "User789",
+          smiles: 5,
+          status: "Open",
+          participants: 8,
+          max_participants: 10,
+          is_free: false,
+          price: "$20",
+          category: "Food & Beverage",
+          // image: LocalCoffeeWorkshop,
+        },
+      ],
+    },
+    {
       title: "Your Plans",
       plans: [
         {
-          plan_id: 6,
+          plan_id: 9,
           name: "Night Run by the Bay",
           description:
             "Join fellow fitness enthusiasts for a refreshing night run around Marina Bay.",
@@ -134,7 +197,7 @@ export const data = {
           image: NightRun,
         },
         {
-          plan_id: 7,
+          plan_id: 10,
           name: "Board Games Night",
           description:
             "Challenge your neighbors to a night of strategy and fun with classic board games.",
@@ -156,7 +219,7 @@ export const data = {
       title: "Plans for Tonight",
       plans: [
         {
-          plan_id: 8,
+          plan_id: 11,
           name: "Karaoke Night",
           description:
             "Sing your heart out with fellow residents at a fun-filled karaoke night!",
@@ -175,10 +238,10 @@ export const data = {
       ],
     },
     {
-      title: "Plans for the Weekend",
+      title: "Weekend Plans",
       plans: [
         {
-          plan_id: 9,
+          plan_id: 12,
           name: "Weekend Brunch at the Bond Kitchen",
           description:
             "Enjoy a delicious brunch and meet new people in the LYF Funan community.",
@@ -186,16 +249,17 @@ export const data = {
           date: "2024-10-26",
           location: "Bond Kitchen",
           created_by: "LYF Funan",
-          smiles: 0,
+          smiles: 10,
           status: "Open",
           participants: 15,
           max_participants: 25,
           is_free: false,
+          price: "$25",
           category: "Food & Beverage",
           image: WeekendBrunch,
         },
         {
-          plan_id: 10,
+          plan_id: 13,
           name: "Cycling Adventure",
           description:
             "Explore the city on two wheels with a cycling adventure to the Marina Barrage.",
@@ -203,12 +267,13 @@ export const data = {
           date: "2024-10-27",
           location: "Meet at LYF Lobby",
           created_by: "User456",
-          smiles: -20,
+          smiles: 15,
           status: "Open",
           participants: 6,
           max_participants: 10,
           is_free: false,
-          category: "Outdoor Activities",
+          price: "$15",
+          category: "Fitness",
           image: CyclingAdventure,
         },
       ],
