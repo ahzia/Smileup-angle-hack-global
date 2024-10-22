@@ -11,7 +11,7 @@ export default function Navbar() {
   const isActive = (path: string) => pathName === path;
 
   return (
-    <nav className="flex justify-center items-center text-white shadow-lg font-sans bg-gradient-to-r from-[#130828] to-[#6e34a7] z-30 fixed bottom-0 w-full px-2 py-2.5 rounded-t-3xl border-t-2 border-[#6e34a7]">
+    <nav className="flex justify-center items-center text-white shadow-lg font-sans bg-gradient-to-r bg-[#262450] z-30 fixed bottom-0 w-full px-2 py-2.5 rounded-t-3xl border-t-2 border-[#6e34a7]">
       <ul className="w-full flex justify-around items-center text-lg relative">
         <li className="relative flex flex-col items-center">
           <Link href="/" className="flex flex-col items-center space-y-1">

@@ -1,3 +1,14 @@
+import Yoga from "../images/yoga.jpeg";
+import DigitalNomads from "../images/digital-meetup.jpeg";
+import MovieNight from "../images/movie-night.jpeg";
+import CookingWorkshop from "../images/cooking.png";
+import PhotographyWalk from "../images/photography.jpg";
+import NightRun from "../images/running.jpg";
+import BoardGames from "../images/board-games.jpg";
+import KaraokeNight from "../images/karoke.jpg";
+import WeekendBrunch from "../images/kitchen.jpg";
+import CyclingAdventure from "../images/cycling.jpg";
+
 export const data = {
   community: {
     name: "LYF Funan",
@@ -25,6 +36,7 @@ export const data = {
           max_participants: 20,
           is_free: true,
           category: "Health & Wellness",
+          image: Yoga,
         },
         {
           plan_id: 2,
@@ -41,6 +53,7 @@ export const data = {
           max_participants: 15,
           is_free: true,
           category: "Networking",
+          image: DigitalNomads,
         },
         {
           plan_id: 3,
@@ -57,6 +70,7 @@ export const data = {
           max_participants: 35,
           is_free: true,
           category: "Entertainment",
+          image: MovieNight,
         },
       ],
     },
@@ -78,6 +92,7 @@ export const data = {
           max_participants: 10,
           is_free: false,
           category: "Food & Beverage",
+          image: CookingWorkshop,
         },
         {
           plan_id: 5,
@@ -94,6 +109,7 @@ export const data = {
           max_participants: 10,
           is_free: true,
           category: "Arts & Culture",
+          image: PhotographyWalk,
         },
       ],
     },
@@ -115,6 +131,7 @@ export const data = {
           max_participants: 10,
           is_free: true,
           category: "Fitness",
+          image: NightRun,
         },
         {
           plan_id: 7,
@@ -131,6 +148,7 @@ export const data = {
           max_participants: 8,
           is_free: true,
           category: "Entertainment",
+          image: BoardGames,
         },
       ],
     },
@@ -152,6 +170,7 @@ export const data = {
           max_participants: 20,
           is_free: true,
           category: "Entertainment",
+          image: KaraokeNight,
         },
       ],
     },
@@ -173,6 +192,7 @@ export const data = {
           max_participants: 25,
           is_free: false,
           category: "Food & Beverage",
+          image: WeekendBrunch,
         },
         {
           plan_id: 10,
@@ -189,6 +209,7 @@ export const data = {
           max_participants: 10,
           is_free: false,
           category: "Outdoor Activities",
+          image: CyclingAdventure,
         },
       ],
     },
