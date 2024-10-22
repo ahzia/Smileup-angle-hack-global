@@ -5,6 +5,10 @@ import {
   MdEmojiEmotions,
   MdPeople,
   MdAttachMoney,
+  MdCategory,
+  MdPerson,
+  MdCalendarToday,
+  MdAccessTime,
 } from "react-icons/md";
 import Modal from "@/components/common/Modal";
 import { Plan } from "@/models/Plan";
@@ -80,32 +84,65 @@ export default function PlanCard({ plan }: PlanCardProps) {
           </div>
         </div>
       </div>
-
-      {/* Modal Content */}
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <div className="relative flex flex-col h-full">
-          {/* Plan Image */}
           <Image
             src={plan.image}
             alt={plan.name}
             className="w-full h-80 object-cover"
           />
           <div className="p-6 flex-1 overflow-y-auto">
-            <h3 className="text-3xl font-bold text-white mb-4">{plan.name}</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">{plan.name}</h3>
             <section className="mb-6">
-              <h4 className="text-xl font-semibold text-gray-200 mb-2">
-                Members
-              </h4>
-              <Members participants={plan.participants} />
-            </section>
-            <section className="mb-6">
-              <h4 className="text-xl font-semibold text-gray-200 mb-2">
-                Details
-              </h4>
               <p className="text-gray-400">{plan.description}</p>
             </section>
             <section className="mb-6">
-              <div className="flex justify-between items-center">
+              <Members participants={plan.participants} />
+            </section>
+            <section className="mb-6">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="flex items-center space-x-2">
+                  <MdCalendarToday className="text-pink-400 text-2xl" />
+                  <div>
+                    <h5 className="text-lg font-semibold text-gray-200">
+                      Date
+                    </h5>
+                    <p className="text-sm text-gray-400">{plan.date}</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <MdAccessTime className="text-blue-400 text-2xl" />
+                  <div>
+                    <h5 className="text-lg font-semibold text-gray-200">
+                      Time
+                    </h5>
+                    <p className="text-sm text-gray-400">{plan.time}</p>
+                  </div>
+                </div>
+
+                {/* Created by */}
+                <div className="flex items-center space-x-2">
+                  <MdPerson className="text-orange-400 text-2xl" />
+                  <div>
+                    <h5 className="text-lg font-semibold text-gray-200">
+                      Created by
+                    </h5>
+                    <p className="text-sm text-gray-400">{plan.created_by}</p>
+                  </div>
+                </div>
+
+                {/* Category */}
+                <div className="flex items-center space-x-2">
+                  <MdCategory className="text-purple-400 text-2xl" />
+                  <div>
+                    <h5 className="text-lg font-semibold text-gray-200">
+                      Category
+                    </h5>
+                    <p className="text-sm text-gray-400">{plan.category}</p>
+                  </div>
+                </div>
+
+                {/* Location */}
                 <div className="flex items-center space-x-2">
                   <MdLocationOn className="text-yellow-400 text-2xl" />
                   <div>
@@ -115,8 +152,10 @@ export default function PlanCard({ plan }: PlanCardProps) {
                     <p className="text-sm text-gray-400">{plan.location}</p>
                   </div>
                 </div>
+
+                {/* Participants */}
                 <div className="flex items-center space-x-2">
-                  <MdPeople className="text-blue-400 text-2xl" />
+                  <MdPeople className="text-green-400 text-2xl" />
                   <div>
                     <h5 className="text-lg font-semibold text-gray-200">
                       Participants
@@ -126,22 +165,23 @@ export default function PlanCard({ plan }: PlanCardProps) {
                     </p>
                   </div>
                 </div>
+
+                {/* Price */}
+                <div className="flex items-center space-x-2">
+                  <MdAttachMoney
+                    className={
+                      plan.is_free
+                        ? "text-green-500 text-2xl"
+                        : "text-yellow-500 text-2xl"
+                    }
+                  />
+                  <h5 className="text-lg font-semibold text-gray-200">
+                    {plan.is_free ? "Free Event" : plan.price}
+                  </h5>
+                </div>
               </div>
             </section>
-            <section className="mb-6">
-              <div className="flex items-center space-x-2">
-                <MdAttachMoney
-                  className={
-                    plan.is_free
-                      ? "text-green-500 text-2xl"
-                      : "text-yellow-500 text-2xl"
-                  }
-                />
-                <h5 className="text-lg font-semibold text-gray-200">
-                  {plan.is_free ? "Free Event" : "Paid Event"}
-                </h5>
-              </div>
-            </section>
+
             <section className="mb-6">
               <div className="flex items-center space-x-2">
                 <MdEmojiEmotions
