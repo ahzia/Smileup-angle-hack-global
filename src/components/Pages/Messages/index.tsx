@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import AIChat from './aiChat';
+import AIChat from './AiChat';
 export default function Messages() {
   const [aiChatOpen, setAiChatOpen] = useState(false);
 
