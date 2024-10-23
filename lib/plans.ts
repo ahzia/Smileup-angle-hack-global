@@ -177,45 +177,6 @@ export const data = {
       ],
     },
     {
-      title: "Your Plans",
-      plans: [
-        {
-          plan_id: 9,
-          name: "Night Run by the Bay",
-          description:
-            "Join fellow fitness enthusiasts for a refreshing night run around Marina Bay.",
-          time: "9:00 PM - 10:00 PM",
-          date: "2024-10-21",
-          location: "Meet at LYF Lobby",
-          created_by: "You",
-          smiles: 0,
-          status: "Joined",
-          participants: 4,
-          max_participants: 10,
-          is_free: true,
-          category: "Fitness",
-          image: NightRun,
-        },
-        {
-          plan_id: 10,
-          name: "Board Games Night",
-          description:
-            "Challenge your neighbors to a night of strategy and fun with classic board games.",
-          time: "7:00 PM - 9:00 PM",
-          date: "2024-10-23",
-          location: "Bond Kitchen",
-          created_by: "You",
-          smiles: 10,
-          status: "Created",
-          participants: 3,
-          max_participants: 8,
-          is_free: true,
-          category: "Entertainment",
-          image: BoardGames,
-        },
-      ],
-    },
-    {
       title: "Plans for Tonight",
       plans: [
         {
@@ -280,3 +241,84 @@ export const data = {
     },
   ],
 };
+
+export const userPlans = [
+  {
+    title: "Your Plans",
+    plans: [
+      {
+        plan_id: 1,
+        name: "Night Run by the Bay",
+        description:
+          "Join fellow fitness enthusiasts for a refreshing night run around Marina Bay.",
+        time: "9:00 PM - 10:00 PM",
+        date: "2024-10-21",
+        location: "Meet at LYF Lobby",
+        created_by: "You",
+        smiles: 0,
+        status: "Joined",
+        participants: 4,
+        max_participants: 10,
+        is_free: true,
+        category: "Fitness",
+        image: NightRun,
+      },
+      {
+        plan_id: 2,
+        name: "Board Games Night",
+        description:
+          "Challenge your neighbors to a night of strategy and fun with classic board games.",
+        time: "7:00 PM - 9:00 PM",
+        date: "2024-10-23",
+        location: "Bond Kitchen",
+        created_by: "You",
+        smiles: 10,
+        status: "Created",
+        participants: 3,
+        max_participants: 8,
+        is_free: true,
+        category: "Entertainment",
+        image: BoardGames,
+      },
+    ],
+  },
+  {
+    title: "plans you joined",
+    plans:[
+      {
+        plan_id: 1,
+        name: "Photography Walk: Explore Singapore",
+        description:
+          "Capture the beauty of Singapore’s urban landscape with a guided photography walk.",
+        time: "5:00 PM - 7:00 PM",
+        date: "2024-10-22",
+        location: "Meet at LYF Lobby",
+        created_by: "User123",
+        smiles: 10,
+        status: "Open",
+        participants: 7,
+        max_participants: 10,
+        is_free: true,
+        category: "Arts & Culture",
+        image: PhotographyWalk,
+      },
+      {
+        plan_id: 2,
+        name: "Morning Yoga at the Rooftop",
+        description:
+          "Start your day with an energizing yoga session on our scenic rooftop. Open to all skill levels.",
+        time: "7:00 AM - 8:00 AM",
+        date: "2024-10-21",
+        location: "Rooftop",
+        created_by: "LYF Funan",
+        smiles: 0,
+        status: "Open",
+        participants: 12,
+        max_participants: 20,
+        is_free: true,
+        category: "Health & Wellness",
+        image: Yoga,
+      },
+    ]
+  }
+]

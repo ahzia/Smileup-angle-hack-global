@@ -18,7 +18,7 @@ export default function Navbar() {
             <div className="transition-transform duration-300">
               <MdHome
                 className={`text-5xl ${
-                  isActive("/") ? "text-[#cbb1e6]" : "text-white"
+                  isActive("/") ? "text-[#00D7FF]" : "text-[#ACADB9]"
                 } transition-colors duration-300`}
               />
             </div>
@@ -33,7 +33,7 @@ export default function Navbar() {
             <div className="transition-transform duration-300">
               <MdCardGiftcard
                 className={`text-5xl ${
-                  isActive("/rewards") ? "text-[#cbb1e6]" : "text-white"
+                  isActive("/rewards") ? "text-[#00D7FF]" : "text-[#ACADB9]"
                 } transition-colors duration-300`}
               />
             </div>
@@ -48,7 +48,7 @@ export default function Navbar() {
             <div className="transition-transform duration-300">
               <MdMail
                 className={`text-5xl ${
-                  isActive("/messages") ? "text-[#cbb1e6]" : "text-white"
+                  isActive("/messages") ? "text-[#00D7FF]" : "text-[#ACADB9]"
                 } transition-colors duration-300`}
               />
             </div>
@@ -63,7 +63,7 @@ export default function Navbar() {
             <div className="transition-transform duration-300">
               <TbDeviceGamepad2
                 className={`text-5xl ${
-                  isActive("/missions") ? "text-[#cbb1e6]" : "text-white"
+                  isActive("/missions") ? "text-[#00D7FF]" : "text-[#ACADB9]"
                 } transition-colors duration-300`}
               />
             </div>

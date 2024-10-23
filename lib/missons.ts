@@ -19,7 +19,9 @@ export const missions = {
             name: "Add 3 New Friends",
             description: "Meet new people in the LYF community and add them as friends.",
             reward: 15,
-            progress: "Not Started",
+            steps: 3, // Total steps needed to complete the mission
+            currentStep: 1, // Current progress of the mission
+            progress: "In Progress", // Update progress based on current step
             deadline: "Today at 11:59 PM",
             status: "active"
           },
@@ -64,6 +66,8 @@ export const missions = {
             name: "Attend 3 Community Events",
             description: "Participate in at least 3 plans or activities this week.",
             reward: 50,
+            steps: 3, // Total number of events to attend
+            currentStep: 2, // User has already attended 2 events
             progress: "In Progress",
             deadline: "This Week",
             status: "active"
@@ -74,6 +78,8 @@ export const missions = {
             name: "Create 2 Plans",
             description: "Host 2 plans for others to join in your LYF community.",
             reward: 40,
+            steps: 2, // Total number of plans to create
+            currentStep: 0, // No plans created yet
             progress: "Not Started",
             deadline: "This Week",
             status: "active"
@@ -104,7 +110,9 @@ export const missions = {
             name: "Make 5 New Friends",
             description: "Connect with at least 5 new residents or users this week.",
             reward: 50,
-            progress: "In Progress",
+            steps: 5, // Total number of friends to add
+            currentStep: 3, // User has already added 3 new friends
+            progress: "In Progress", // Update based on currentStep
             deadline: "This Week",
             status: "active"
           }

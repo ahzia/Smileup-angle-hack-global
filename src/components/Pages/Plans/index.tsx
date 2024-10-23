@@ -12,6 +12,7 @@ export default function Plans() {
 
   return (
     <div className="container mx-auto pt-5 pb-14">
+      {/* an image like a cover photo */}
       <MyProfile user={userData} />
       <SearchBar onSearch={handleSearch} />
       <PlansCategories categories={data.categories} />
