@@ -4,6 +4,7 @@ import AIChat from './AiChat';
 export default function Messages() {
   const [aiChatOpen, setAiChatOpen] = useState(false);
 
+  // eslint-disable-next-line
   const [messages, setMessages] = useState([
     {
       id: 1, user: 'Tamim', message: 'Hey! Are you coming to the meetup?', time: '2:45 PM', ai: false,
