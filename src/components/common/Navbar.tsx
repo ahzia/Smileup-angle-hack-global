@@ -3,7 +3,10 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdHome, MdCardGiftcard, MdMail } from "react-icons/md";
+import { AiFillMessage } from "react-icons/ai";
 import { TbDeviceGamepad2 } from "react-icons/tb";
+import { BiSolidGift } from "react-icons/bi";
+import { IoLogoGameControllerB } from "react-icons/io";
 
 export default function Navbar() {
   const pathName = usePathname();
@@ -18,15 +21,15 @@ export default function Navbar() {
         </NavItem>
 
         <NavItem href="/rewards" isActive={isActive("/rewards")}>
-          <MdCardGiftcard />
+          <BiSolidGift />
         </NavItem>
 
         <NavItem href="/messages" isActive={isActive("/messages")}>
-          <MdMail />
+          <AiFillMessage />
         </NavItem>
 
         <NavItem href="/missions" isActive={isActive("/missions")}>
-          <TbDeviceGamepad2 />
+          <IoLogoGameControllerB />
         </NavItem>
       </ul>
     </nav>

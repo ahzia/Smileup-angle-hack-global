@@ -49,7 +49,7 @@ const PlanModal: React.FC<PlanModalProps> = ({ isOpen, onClose, plan }) => {
             <div className="grid grid-cols-2 gap-4">
               {/* Date */}
               <div className="flex items-center space-x-2">
-                <MdCalendarToday className="text-highlight text-2xl" />
+                <MdCalendarToday className="text-pink-400 text-2xl" />
                 <div>
                   <h5 className="text-lg font-semibold">Date</h5>
                   <p className="text-textSecondary">{plan.date}</p>
@@ -58,7 +58,7 @@ const PlanModal: React.FC<PlanModalProps> = ({ isOpen, onClose, plan }) => {
 
               {/* Time */}
               <div className="flex items-center space-x-2">
-                <MdAccessTime className="text-highlight text-2xl" />
+                <MdAccessTime className="text-blue-400 text-2xl" />
                 <div>
                   <h5 className="text-lg font-semibold">Time</h5>
                   <p className="text-textSecondary">{plan.time}</p>
@@ -67,7 +67,7 @@ const PlanModal: React.FC<PlanModalProps> = ({ isOpen, onClose, plan }) => {
 
               {/* Created by */}
               <div className="flex items-center space-x-2">
-                <MdPerson className="text-highlight text-2xl" />
+                <MdPerson className="text-orange-400 text-2xl" />
                 <div>
                   <h5 className="text-lg font-semibold">Created by</h5>
                   <p className="text-textSecondary">{plan.created_by}</p>
@@ -76,7 +76,7 @@ const PlanModal: React.FC<PlanModalProps> = ({ isOpen, onClose, plan }) => {
 
               {/* Category */}
               <div className="flex items-center space-x-2">
-                <MdCategory className="text-highlight text-2xl" />
+                <MdCategory className="text-purple-400 text-2xl" />
                 <div>
                   <h5 className="text-lg font-semibold">Category</h5>
                   <p className="text-textSecondary">{plan.category}</p>
