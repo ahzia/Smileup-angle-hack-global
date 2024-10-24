@@ -242,10 +242,8 @@ export const data = {
   ],
 };
 
-export const userPlans = [
-  {
-    title: "Your Plans",
-    plans: [
+export const userPlans = {
+  "created": [
       {
         plan_id: 1,
         name: "Night Run by the Bay",
@@ -281,10 +279,7 @@ export const userPlans = [
         image: BoardGames,
       },
     ],
-  },
-  {
-    title: "plans you joined",
-    plans:[
+  "Joined":[
       {
         plan_id: 1,
         name: "Photography Walk: Explore Singapore",
@@ -321,4 +316,3 @@ export const userPlans = [
       },
     ]
   }
-]

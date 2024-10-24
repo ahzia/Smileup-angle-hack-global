@@ -6,4 +6,5 @@ export const userData = {
   email: "example@gmail.com",
   profilePic: userPic,
   smiles: 100,
+  bio: 'Digital Nomad | Travel Enthusiast'
 };

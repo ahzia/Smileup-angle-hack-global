@@ -1,4 +1,9 @@
 import Modal from "@/components/common/Modal";
+import { userData } from "../../../lib/user";
+import { BiEdit } from "react-icons/bi";
+import Image from "next/image";
+import PlanCard from "../Pages/Plans/PlanCard";
+import { userPlans } from "../../../lib/plans";
 export default function Profile({ isOpen, onClose, user }) {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -6,16 +11,20 @@ export default function Profile({ isOpen, onClose, user }) {
         <div className="min-h-screen bg-[#130828] text-white flex flex-col items-center">
           {/* Profile Header */}
           <div className="w-full bg-[#262450] p-6 flex flex-col items-center rounded-b-3xl">
-            <img
-              src="/path/to/profile-pic.jpg"
+            <Image
+              src={userData.profilePic}
               alt="User Avatar"
               className="w-24 h-24 rounded-full border-4 border-[#00D7FF]"
             />
-            <h1 className="text-2xl font-semibold mt-4 text-[#FFFFFF]">John Doe</h1>
-            <p className="text-sm text-[#ACADB9]">Digital Nomad | Travel Enthusiast</p>
+            <div className="flex">
+              <h1 className="text-2xl font-semibold mt-4 text-[#FFFFFF]">{userData.name}</h1>
+              {/* edit icon */}
+              <BiEdit className="text-[#00D7FF] text-2xl ml-2 mt-6" />
+            </div>
+            <p className="text-sm text-[#ACADB9]">{userData.bio}</p>
             <div className="mt-4 flex gap-4">
               <div className="flex flex-col items-center">
-                <span className="text-[#00D7FF] font-semibold text-xl">150</span>
+                <span className="text-[#00D7FF] font-semibold text-xl">{userData.smiles}</span>
                 <span className="text-[#ACADB9] text-sm">Smiles</span>
               </div>
               <div className="flex flex-col items-center">
@@ -62,7 +71,6 @@ export default function Profile({ isOpen, onClose, user }) {
               </li>
             </ul>
           </div>
-
           {/* Settings Button */}
           <button className="mt-6 mb-6 py-2 px-6 bg-[#00D7FF] text-[#130828] font-bold rounded-full">
             Settings
