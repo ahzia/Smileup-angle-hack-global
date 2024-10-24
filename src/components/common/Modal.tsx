@@ -1,16 +1,20 @@
 import { ReactNode, useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import { createPortal } from "react-dom";
+import classNames from "classnames";
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
+  className?: string;
 }
 
-export default function Modal({ isOpen, onClose, children }: ModalProps) {
-  // Handle click outside modal to close
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+export default function Modal({ isOpen, onClose, children, className }: ModalProps) {
+  // Close modal when clicking outside the modal content
+  const handleOverlayClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
@@ -43,12 +47,15 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
       onClick={handleOverlayClick}
     >
       <div
-        className="bg-cardBgLight w-full max-w-4xl h-full max-h-[100vh] rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 ease-in-out"
-        style={{ transform: isOpen ? "translateY(0)" : "translateY(100vh)" }}
+        className={classNames(
+          "bg-[#1E212D] w-full max-w-4xl h-full max-h-[100vh] rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 ease-in-out",
+          className,
+          { "translate-y-0": isOpen, "translate-y-full": !isOpen }
+        )}
       >
         <div className="relative h-full">
           <button
-            className="absolute top-4 right-4 z-10 bg-secondary p-2 rounded-full hover:bg-error transition-all duration-200"
+            className="absolute top-4 right-4 z-20 bg-secondary p-2 rounded-full hover:bg-error transition-all duration-200"
             onClick={onClose}
             aria-label="Close Modal"
           >

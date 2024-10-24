@@ -1,48 +1,31 @@
-import {MdEmojiEmotions} from "react-icons/md";
-import {rewards} from "../../../../lib/rewards";
+'use client';
+import { RewardsData } from '@/models/Rewards';
+import CategoryDropdown from './CategoryDropdown';
+import { rewards } from '../../../../lib/rewards';
+import { FaGift, FaSmile } from 'react-icons/fa'; // Importing icons from react-icons
+
 export default function Rewards() {
+  const rewardsData: RewardsData = rewards;
+
   return (
-    <div className="container">
-      <div className="min-h-screen bg-[#130828] text-white p-4">
-        {/* Page Header */}
-        <h1 className="text-2xl font-bold mb-6 text-center">Rewards Hub</h1>
+    <div className="container mx-auto p-6 text-textPrimary">
+      {/* Page Header */}
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-extrabold tracking-tight">
+          Rewards Hub <FaGift className="inline-block ml-2 text-highlight" />
+        </h1>
+        <p className="text-textSecondary mt-2">
+          Discover amazing rewards you can claim with your smiles <FaSmile className="inline-block ml-1 text-highlight" />        </p>
+      </div>
 
-        {/* Reward Sections */}
-        {Object.values(rewards.rewards).map((rewardSection) => (
-          <div key={rewardSection.title} className="mb-8">
-            {/* Section Title */}
-            <h2 className="text-xl font-semibold mb-4">{rewardSection.title}</h2>
-
-            {/* Reward Cards */}
-            <div className="space-y-4">
-              {rewardSection.items.map((reward) => (
-                <div
-                  key={reward.rewardId}
-                  className="flex items-center bg-[#232627] rounded-lg p-4 shadow-md"
-                >
-                  {/* Reward Image */}
-                  <img
-                    src={reward.imageUrl}
-                    alt={reward.name}
-                    className="w-16 h-16 rounded-full mr-4"
-                  />
-
-                  {/* Reward Info */}
-                  <div className="flex flex-col">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold">
-                        {reward.name}
-                      </h3>
-                      <p className="text-green-500 font-bold">{reward.smilesCost} <MdEmojiEmotions className={`text-lg font-bold text-green-500`} /></p>
-                    </div>
-                    <p className="text-sm text-[#ACADB9]">{reward.description}</p>
-                    <p className="text-xs text-[#ACADB9]">📍 {reward.location}</p>
-                    <p className="text-xs text-[#ACADB9]">⏳ {reward.validity}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* Reward Sections */}
+      <div className="space-y-8">
+        {Object.entries(rewardsData.rewards).map(([key, rewardSection]) => (
+          <CategoryDropdown
+            key={key}
+            title={rewardSection.title}
+            items={rewardSection.items}
+          />
         ))}
       </div>
     </div>
