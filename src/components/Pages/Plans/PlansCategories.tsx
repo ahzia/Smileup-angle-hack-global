@@ -17,13 +17,13 @@ export default function PlansCategories({ categories }: PlansCategoriesProps) {
       {categories.map((category) => (
         <div key={category.title}>
           <div className="flex justify-between items-center mb-5">
-            <h2 className="text-xl font-semibold text-white">
+            <h2 className="text-xl font-semibold text-textPrimary">
               {category.title}
             </h2>
 
             <Link
               href="#"
-              className="text-[#6e34a7] text-sm font-bold underline"
+              className="text-highlight text-sm font-bold underline"
             >
               See More
             </Link>

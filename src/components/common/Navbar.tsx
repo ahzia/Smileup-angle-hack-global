@@ -8,68 +8,43 @@ import { TbDeviceGamepad2 } from "react-icons/tb";
 export default function Navbar() {
   const pathName = usePathname();
 
-  const isActive = (path: string) => pathName === path;
+  const isActive = (path) => pathName === path;
 
   return (
-    <nav className="flex justify-center items-center text-white shadow-lg font-sans bg-gradient-to-r bg-[#262450] z-30 fixed bottom-0 w-full px-2 py-2.5 rounded-t-3xl border-t-2 border-[#6e34a7]">
+    <nav className="flex justify-center items-center text-white shadow-lg font-sans bg-secondary z-30 fixed bottom-0 w-full px-4 py-3 rounded-t-3xl border-t-2 border-[#6e34a7]">
       <ul className="w-full flex justify-around items-center text-lg relative">
-        <li className="relative flex flex-col items-center">
-          <Link href="/" className="flex flex-col items-center space-y-1">
-            <div className="transition-transform duration-300">
-              <MdHome
-                className={`text-5xl ${
-                  isActive("/") ? "text-[#00D7FF]" : "text-[#ACADB9]"
-                } transition-colors duration-300`}
-              />
-            </div>
-          </Link>
-        </li>
+        <NavItem href="/" isActive={isActive("/")}>
+          <MdHome />
+        </NavItem>
 
-        <li className="relative flex flex-col items-center">
-          <Link
-            href="/rewards"
-            className="flex flex-col items-center space-y-1"
-          >
-            <div className="transition-transform duration-300">
-              <MdCardGiftcard
-                className={`text-5xl ${
-                  isActive("/rewards") ? "text-[#00D7FF]" : "text-[#ACADB9]"
-                } transition-colors duration-300`}
-              />
-            </div>
-          </Link>
-        </li>
+        <NavItem href="/rewards" isActive={isActive("/rewards")}>
+          <MdCardGiftcard />
+        </NavItem>
 
-        <li className="relative flex flex-col items-center">
-          <Link
-            href="/messages"
-            className="flex flex-col items-center space-y-1"
-          >
-            <div className="transition-transform duration-300">
-              <MdMail
-                className={`text-5xl ${
-                  isActive("/messages") ? "text-[#00D7FF]" : "text-[#ACADB9]"
-                } transition-colors duration-300`}
-              />
-            </div>
-          </Link>
-        </li>
+        <NavItem href="/messages" isActive={isActive("/messages")}>
+          <MdMail />
+        </NavItem>
 
-        <li className="relative flex flex-col items-center">
-          <Link
-            href="/missions"
-            className="flex flex-col items-center space-y-1"
-          >
-            <div className="transition-transform duration-300">
-              <TbDeviceGamepad2
-                className={`text-5xl ${
-                  isActive("/missions") ? "text-[#00D7FF]" : "text-[#ACADB9]"
-                } transition-colors duration-300`}
-              />
-            </div>
-          </Link>
-        </li>
+        <NavItem href="/missions" isActive={isActive("/missions")}>
+          <TbDeviceGamepad2 />
+        </NavItem>
       </ul>
     </nav>
+  );
+}
+
+function NavItem({ href, isActive, children }) {
+  return (
+    <li className="relative flex flex-col items-center">
+      <Link href={href} className="flex flex-col items-center space-y-1">
+        <div
+          className={`transition-transform duration-300 text-5xl ${
+            isActive ? "text-highlight" : "text-textSecondary"
+          }`}
+        >
+          {children}
+        </div>
+      </Link>
+    </li>
   );
 }

@@ -9,22 +9,27 @@ interface ModalProps {
 }
 
 export default function Modal({ isOpen, onClose, children }: ModalProps) {
-  // Close modal when clicking outside the modal content
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  // Handle click outside modal to close
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
 
-  // Prevent scrolling of background when modal is open
+  // Handle ESC key to close the modal
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    const handleEscapeKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
+        onClose();
+      }
+    };
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => document.removeEventListener("keydown", handleEscapeKey);
+  }, [isOpen, onClose]);
+
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -38,18 +43,18 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
       onClick={handleOverlayClick}
     >
       <div
-        className="bg-[#1E212D] w-full max-w-4xl h-full max-h-[100vh] rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 ease-in-out"
+        className="bg-cardBgLight w-full max-w-4xl h-full max-h-[100vh] rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 ease-in-out"
         style={{ transform: isOpen ? "translateY(0)" : "translateY(100vh)" }}
       >
         <div className="relative h-full">
           <button
-            className="absolute top-4 right-4 z-10 bg-black bg-opacity-50 p-2 rounded-full hover:bg-red-500 transition-all duration-200"
+            className="absolute top-4 right-4 z-10 bg-secondary p-2 rounded-full hover:bg-error transition-all duration-200"
             onClick={onClose}
             aria-label="Close Modal"
           >
-            <MdClose size={28} className="text-white" />
+            <MdClose size={28} className="text-textPrimary" />
           </button>
-          <div className="h-full flex flex-col">{children}</div>
+          <div className="h-full flex flex-col text-textPrimary">{children}</div>
         </div>
       </div>
     </div>,

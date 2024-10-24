@@ -15,9 +15,9 @@ export default function MissionItem({ mission }) {
 
   return (
     <div
-      className={`flex flex-col items-start justify-between p-4 mb-4 border rounded-lg shadow-sm ${
-        isMissionCompleted ? "border-green-500" : ""
-      }`}
+      className={`flex flex-col items-start justify-between p-4 mb-4 border rounded-lg shadow-sm transition duration-200 ${
+        isMissionCompleted ? "border-green-500" : "border-highlight"
+      } hover:shadow-lg`}
       onClick={() => setShowDescription(!showDescription)}
     >
       <div className="flex items-start w-full">
@@ -25,8 +25,8 @@ export default function MissionItem({ mission }) {
         <div className="flex flex-col gap-3 items-start">
           <div className="text-3xl mr-4">{mission.icon}</div>
           <div className="flex items-center">
-            <p className="font-semibold text-green-500">+{mission.reward}</p>
-            <MdEmojiEmotions className={`text-lg font-bold text-green-500`} />
+            <p className="font-semibold text-highlight">+{mission.reward}</p>
+            <MdEmojiEmotions className={`text-lg font-bold text-highlight`} />
           </div>
         </div>
 
@@ -41,7 +41,7 @@ export default function MissionItem({ mission }) {
           </h2>
 
           {showDescription && (
-            <p className="text-gray-500">{mission.description}</p>
+            <p className="text-textSecondary">{mission.description}</p>
           )}
 
           {/* Progress Bar or Completed Status */}
@@ -49,18 +49,18 @@ export default function MissionItem({ mission }) {
             <div className="flex items-center w-full mt-2">
               <div className="w-full h-4 bg-gray-200 rounded-full">
                 <div
-                  className="h-full bg-green-500 rounded-full"
+                  className="h-full bg-highlight rounded-full"
                   style={{ width: `${progressPercent}%` }}
                 ></div>
               </div>
-              <p className="ml-2 text-gray-500">
+              <p className="ml-2 text-textSecondary">
                 {mission.currentStep}/{mission.steps}
               </p>
             </div>
           ) : isMissionCompleted ? (
             <p className="text-green-500 font-semibold">Mission Completed!</p>
           ) : (
-            <p className="text-gray-500 mt-2">Not Started</p>
+            <p className="text-textSecondary mt-2">Not Started</p>
           )}
         </div>
       </div>

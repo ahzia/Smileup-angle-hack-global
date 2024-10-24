@@ -31,9 +31,9 @@ const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   return (
-    <div className="flex items-center border-b-2 border-[#6e34a7] py-2 mb-4 rounded-md shadow-md">
+    <div className="flex items-center border-b-2 border-highlight py-2 mb-4 rounded-md shadow-md">
       <input
-        className="appearance-none bg-[#262450] w-full text-white placeholder-gray-500 mr-3 px-3 py-3 leading-tight focus:outline-none rounded-full"
+        className="appearance-none bg-secondary w-full text-textPrimary placeholder-textSecondary mr-3 px-3 py-3 leading-tight focus:outline-none rounded-full"
         type="text"
         placeholder={placeholder}
         value={query}
@@ -42,7 +42,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         disabled={isLoading}
       />
       <button
-        className={`flex-shrink-0 bg-[#6e34a7] hover:bg-[#532586] border-none text-sm text-white py-3 px-4 rounded-full transition duration-300 ${
+        className={`flex-shrink-0 bg-highlight hover:bg-warning border-none text-sm text-textPrimary py-3 px-4 rounded-full transition duration-300 ${
           isLoading ? "cursor-not-allowed opacity-50" : ""
         }`}
         type="button"
