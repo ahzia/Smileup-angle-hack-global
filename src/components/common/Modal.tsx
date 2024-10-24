@@ -1,14 +1,16 @@
 import { ReactNode, useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import { createPortal } from "react-dom";
+import classNames from "classnames";
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
+  className?: string;
 }
 
-export default function Modal({ isOpen, onClose, children }: ModalProps) {
+export default function Modal({ isOpen, onClose, children, className }: ModalProps) {
   // Close modal when clicking outside the modal content
   const handleOverlayClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -38,8 +40,11 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
       onClick={handleOverlayClick}
     >
       <div
-        className="bg-[#1E212D] w-full max-w-4xl h-full max-h-[100vh] rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 ease-in-out"
-        style={{ transform: isOpen ? "translateY(0)" : "translateY(100vh)" }}
+        className={classNames(
+          "bg-[#1E212D] w-full max-w-4xl h-full max-h-[100vh] rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 ease-in-out",
+          className,
+          { "translate-y-0": isOpen, "translate-y-full": !isOpen }
+        )}
       >
         <div className="relative h-full">
           <button
