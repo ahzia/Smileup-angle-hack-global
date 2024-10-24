@@ -3,12 +3,15 @@ import Image from "next/image";
 import { MdLocationOn, MdEmojiEmotions, MdPeople } from "react-icons/md";
 import PlanModal from "./PlanModal";
 import { Plan } from "@/models/Plan";
+import { User } from "@/models/User";
 
 interface PlanCardProps {
   plan: Plan;
+  user: User;
+  setUser: (user: User) => void;
 }
 
-export default function PlanCard({ plan }: PlanCardProps) {
+export default function PlanCard({ plan, user, setUser }: PlanCardProps) {
   const [isModalOpen, setModalOpen] = useState(false);
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
@@ -63,7 +66,13 @@ export default function PlanCard({ plan }: PlanCardProps) {
           </div>
         </div>
       </div>
-      <PlanModal isOpen={isModalOpen} onClose={closeModal} plan={plan} />
+      <PlanModal 
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        plan={plan}
+        user={user}
+        setUser={setUser}
+      />
     </>
   );
 }
