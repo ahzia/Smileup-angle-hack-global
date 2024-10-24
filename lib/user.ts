@@ -1,5 +1,4 @@
-import userPic from "../images/profile.png";
-import ahmadPic from "../images/users/Ahmadzia.png";
+import ahmadPic from "../images/Users/Ahmadzia.png";
 
 
 export const users = [
