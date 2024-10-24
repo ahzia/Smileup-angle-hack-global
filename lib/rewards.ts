@@ -1,4 +1,15 @@
 import { RewardsData } from "@/models/Rewards"; // Ensure this import is correct
+import FreeCoffee from "../images/FreeCoffee.jpg";
+import CoworkingDiscount from "../images/CoworkingDiscount.jpg";
+import FreeGymPass from "../images/FreeGymPass.jpg";
+import DinnerDiscount from "../images/DinnerDiscount.jpg";
+import FreeYogaClass from "../images/FreeYogaClass.jpg";
+import MovieTickets from "../images/MovieTickets.jpg";
+import GalleryEntry from "../images/GalleryEntry.jpg";
+import KoreanRestaurantDiscount from "../images/KoreanRestaurantDiscount.jpg";
+import CookingSession from "../images/CookingSession.jpg";
+import LyfTshirt from "../images/LyfTshirt.jpg";
+import SunsetCruise from "../images/SunsetCruise.jpg";
 
 export const rewards: RewardsData = {
   rewards: {
@@ -15,7 +26,7 @@ export const rewards: RewardsData = {
           location: "Bond Café, 1st Floor",
           type: "food",
           emoji: "☕️",
-          imageUrl: "https://example.com/images/free-coffee.jpg",
+          imageUrl: FreeCoffee,
         },
         {
           rewardId: "002",
@@ -28,7 +39,7 @@ export const rewards: RewardsData = {
           location: "Connect, 2nd Floor",
           type: "service",
           emoji: "💻",
-          imageUrl: "https://example.com/images/coworking-discount.jpg",
+          imageUrl: CoworkingDiscount,
         },
         {
           rewardId: "003",
@@ -41,7 +52,7 @@ export const rewards: RewardsData = {
           location: "Burn Gym, 3rd Floor",
           type: "fitness",
           emoji: "🏋️‍♂️",
-          imageUrl: "https://example.com/images/free-gym-pass.jpg",
+          imageUrl: FreeGymPass,
         },
       ],
     },
@@ -59,7 +70,7 @@ export const rewards: RewardsData = {
           location: "8 Raffles Ave, Singapore",
           type: "food",
           emoji: "🍽️",
-          imageUrl: "https://example.com/images/bento-cafe.jpg",
+          imageUrl: DinnerDiscount,
         },
         {
           rewardId: "005",
@@ -72,7 +83,7 @@ export const rewards: RewardsData = {
           location: "22 Keong Saik Rd, Singapore",
           type: "wellness",
           emoji: "🧘",
-          imageUrl: "https://example.com/images/yoga-movement.jpg",
+          imageUrl: FreeYogaClass,
         },
         {
           rewardId: "006",
@@ -85,7 +96,7 @@ export const rewards: RewardsData = {
           location: "6001 Beach Rd, Singapore",
           type: "entertainment",
           emoji: "🎬",
-          imageUrl: "https://example.com/images/projector-movie.jpg",
+          imageUrl: MovieTickets,
         },
         {
           rewardId: "007",
@@ -98,7 +109,7 @@ export const rewards: RewardsData = {
           location: "1 St. Andrew's Rd, Singapore",
           type: "entertainment",
           emoji: "🖼️",
-          imageUrl: "https://example.com/images/national-gallery.jpg",
+          imageUrl: GalleryEntry,
         },
         {
           rewardId: "008",
@@ -111,7 +122,7 @@ export const rewards: RewardsData = {
           location: "109 North Bridge Rd, Singapore",
           type: "food",
           emoji: "🍜",
-          imageUrl: "https://example.com/images/ajummas-restaurant.jpg",
+          imageUrl: KoreanRestaurantDiscount,
         },
       ],
     },
@@ -129,7 +140,7 @@ export const rewards: RewardsData = {
           location: "Bond Kitchen, 1st Floor",
           type: "experience",
           emoji: "👨‍🍳",
-          imageUrl: "https://example.com/images/cooking-class.jpg",
+          imageUrl: CookingSession,
         },
         {
           rewardId: "010",
@@ -142,7 +153,7 @@ export const rewards: RewardsData = {
           location: "Reception Desk",
           type: "merchandise",
           emoji: "👕",
-          imageUrl: "https://example.com/images/lyf-tshirt.jpg",
+          imageUrl: LyfTshirt,
         },
         {
           rewardId: "011",
@@ -155,7 +166,7 @@ export const rewards: RewardsData = {
           location: "Pier 3, River Road",
           type: "experience",
           emoji: "🚤",
-          imageUrl: "https://example.com/images/sunset-cruise.jpg",
+          imageUrl: SunsetCruise,
         },
       ],
     },
