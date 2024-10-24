@@ -15,7 +15,7 @@ export default function RewardItem({ reward }: RewardItemProps) {
     return (
         <>
             <div
-                className="bg-cardBg p-4 rounded-lg shadow-lg h-full flex flex-col justify-between transition-transform duration-200 hover:scale-105 cursor-pointer"
+                className="p-4 rounded-lg shadow-lg border-2 border-highlight h-full flex flex-col justify-between transition-transform duration-200 hover:scale-105 cursor-pointer"
                 onClick={openModal}
             >
                 <div className="flex flex-col space-y-1 h-full">
