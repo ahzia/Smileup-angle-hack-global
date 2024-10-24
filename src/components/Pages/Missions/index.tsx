@@ -16,16 +16,16 @@ export default function MissionsPage() {
       {/* Tabs for Daily and Weekly Missions */}
       <div className="flex justify-center mb-6">
         <button
-          className={`px-4 py-2 rounded-t-lg ${
-            selectedTab === 'daily' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-blue-600'
+          className={`px-4 py-2 rounded-t-lg transition duration-200 ${
+            selectedTab === 'daily' ? 'bg-highlight text-mainBg' : 'bg-cardBg text-textSecondary'
           }`}
           onClick={() => handleTabChange('daily')}
         >
           Daily Missions
         </button>
         <button
-          className={`px-4 py-2 rounded-t-lg ml-2 ${
-            selectedTab === 'weekly' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-blue-600'
+          className={`px-4 py-2 rounded-t-lg ml-2 transition duration-200 ${
+            selectedTab === 'weekly' ? 'bg-highlight text-mainBg' : 'bg-cardBg text-textSecondary'
           }`}
           onClick={() => handleTabChange('weekly')}
         >
@@ -34,7 +34,7 @@ export default function MissionsPage() {
       </div>
 
       {/* Mission Items */}
-      <div className="shadow-md rounded-lg p-4">
+      <div className="shadow-md rounded-lg p-4 ">
         {selectedTab === 'daily' &&
           missions.missions.dailyMissions.items.map((mission) => (
             <MissionItem key={mission.missionId} mission={mission} />

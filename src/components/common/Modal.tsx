@@ -20,13 +20,20 @@ export default function Modal({ isOpen, onClose, children, className }: ModalPro
     }
   };
 
-  // Prevent scrolling of background when modal is open
+  // Handle ESC key to close the modal
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    const handleEscapeKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
+        onClose();
+      }
+    };
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => document.removeEventListener("keydown", handleEscapeKey);
+  }, [isOpen, onClose]);
+
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -48,13 +55,13 @@ export default function Modal({ isOpen, onClose, children, className }: ModalPro
       >
         <div className="relative h-full">
           <button
-            className="absolute top-4 right-4 z-10 bg-black bg-opacity-50 p-2 rounded-full hover:bg-red-500 transition-all duration-200"
+            className="absolute top-4 right-4 z-10 bg-secondary p-2 rounded-full hover:bg-error transition-all duration-200"
             onClick={onClose}
             aria-label="Close Modal"
           >
-            <MdClose size={28} className="text-white" />
+            <MdClose size={28} className="text-textPrimary" />
           </button>
-          <div className="h-full flex flex-col">{children}</div>
+          <div className="h-full flex flex-col text-textPrimary">{children}</div>
         </div>
       </div>
     </div>,

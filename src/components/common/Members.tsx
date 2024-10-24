@@ -33,18 +33,21 @@ const Members: React.FC<MembersProps> = ({ participants }) => {
 
   return (
     <div className="flex justify-center mr-2">
+      {/* Display Member Avatars */}
       {displayedMembers.map((member) => (
         <Image
           key={member.login.uuid}
           src={member.picture.medium}
           alt={`${member.name.first} ${member.name.last}`}
-          className="border-2 border-white dark:border-gray-800 rounded-full h-10 w-10 -mr-2"
+          className="border-2 border-cardBgLight rounded-full h-10 w-10 -mr-2"
           width={100}
           height={100}
         />
       ))}
+
+      {/* Display Remaining Participant Count */}
       {remainingCount > 0 && (
-        <span className="flex items-center justify-center bg-white dark:bg-gray-800 text-sm text-gray-800 dark:text-white font-semibold border-2 border-gray-200 dark:border-gray-700 rounded-full h-10 w-10">
+        <span className="flex items-center justify-center bg-cardBg text-sm text-textPrimary font-semibold border-2 border-cardBgLight rounded-full h-10 w-10">
           +{remainingCount}
         </span>
       )}
