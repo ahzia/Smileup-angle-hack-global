@@ -10,6 +10,7 @@ interface PlanCardProps {
 
 export default function PlanCard({ plan }: PlanCardProps) {
   const [isModalOpen, setModalOpen] = useState(false);
+
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
@@ -33,12 +34,9 @@ export default function PlanCard({ plan }: PlanCardProps) {
                 </div>
               </div>
             ) : (
-              <div className={`absolute flex top-2 right-2 bg-[#FFF] p-2 rounded-full shadow-lg border-4 ${plan.smiles >= 0 ? "border-green-500" : "border-orange-500"
-                }`}>
-                <MdEmojiEmotions className={`text-lg font-bold ${plan.smiles >= 0 ? "text-green-500" : "text-orange-500"
-                  }`} />
-                <span className={`text-sm font-bold ${plan.smiles >= 0 ? "text-green-500" : "text-orange-500"
-                  }`}>
+              <div className={`absolute flex top-2 right-2 bg-[#FFF] p-2 rounded-full shadow-lg border-4 ${plan.smiles >= 0 ? "border-green-500" : "border-orange-500"}`}>
+                <MdEmojiEmotions className={`text-lg font-bold ${plan.smiles >= 0 ? "text-green-500" : "text-orange-500"}`} />
+                <span className={`text-sm font-bold ${plan.smiles >= 0 ? "text-green-500" : "text-orange-500"}`}>
                   {plan.smiles}
                 </span>
               </div>
@@ -63,7 +61,11 @@ export default function PlanCard({ plan }: PlanCardProps) {
           </div>
         </div>
       </div>
-      <PlanModal isOpen={isModalOpen} onClose={closeModal} plan={plan} />
+      <PlanModal 
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        plan={plan}
+      />
     </>
   );
 }

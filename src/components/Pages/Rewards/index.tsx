@@ -20,7 +20,7 @@ export default function Rewards() {
       </div>
 
       {/* Reward Sections */}
-      <div className="space-y-8">
+      <div className="space-y-8 pb-8">
         {Object.entries(rewardsData.rewards).map(([key, rewardSection]) => (
           <CategoryDropdown
             key={key}

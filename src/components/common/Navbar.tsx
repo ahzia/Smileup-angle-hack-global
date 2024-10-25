@@ -32,7 +32,7 @@ export default function Navbar() {
           <IoLogoGameControllerB />
         </NavItem>
 
-        <NavItem href="/profile" isActive={isActive("/meet")}>
+        <NavItem href="/meet" isActive={isActive("/meet")}>
           <FaUserFriends />
         </NavItem>
       </ul>
