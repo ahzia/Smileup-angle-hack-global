@@ -26,9 +26,22 @@ const userSlice = createSlice({
     },
     updateLoggedInUser(state, action: PayloadAction<Partial<typeof userData>>) {
       state.loggedInUser = { ...state.loggedInUser, ...action.payload };
+    },
+    // New action to add joined plan
+    addJoinedPlan(state, action: PayloadAction<number>) {
+      console.log('Adding plan:', action.payload);
+      if (!state.loggedInUser.plansJoined.includes(action.payload)) {
+        console.log('Plan not found, adding plan:', action.payload);
+        state.loggedInUser.plansJoined.push(action.payload);
+        console.log('User:', state.loggedInUser);
+      }
+    },
+    // New action to remove joined plan
+    removeJoinedPlan(state, action: PayloadAction<number>) {
+      state.loggedInUser.plansJoined = state.loggedInUser.plansJoined.filter(id => id !== action.payload);
     }
   }
 });
 
-export const { updateUser, addSmile, updateLoggedInUser } = userSlice.actions;
+export const { updateUser, addSmile, updateLoggedInUser, addJoinedPlan, removeJoinedPlan } = userSlice.actions;
 export default userSlice.reducer;

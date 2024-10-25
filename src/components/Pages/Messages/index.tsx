@@ -1,9 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
 import AIChat from './AiChat';
-import { userData } from '../../../../lib/user';
-import { data } from '../../../../lib/plans'; // Assuming plans data contains the categories and plans
-import GroupChat from '../Plans/chat';
+import GroupChat from '../Plans/Chat';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store'; // Import RootState for typing
 
 export default function Messages() {
   const [aiChatOpen, setAiChatOpen] = useState(false);
@@ -22,38 +22,44 @@ export default function Messages() {
 
   const [planMessages, setPlanMessages] = useState([]);
 
+  // Get the logged-in user and the plans from the Redux store
+  const user = useSelector((state: RootState) => state.user.loggedInUser);
+  const plans = useSelector((state: RootState) => state.plans); // Assuming plans are stored in state.plans.data
+
+  const userPlanIds = user.plansJoined;
+
   useEffect(() => {
     const fetchUserPlanMessages = () => {
-      const userPlanIds = userData.plansJoined;
-
       const filteredMessages = [];
 
-      for (const category of data.categories) {
-        const relevantPlans = category.plans.filter(plan => userPlanIds.includes(plan.plan_id));
+      // Filter plans by the user's joined plan IDs
+      if (plans) {
+        for (const category of plans.categories) {
+          const relevantPlans = category.plans.filter(plan => userPlanIds.includes(plan.plan_id));
 
-        relevantPlans.forEach(plan => {
-          if (plan.groupChat.length > 0) {
-            const lastMessage = plan.groupChat[plan.groupChat.length - 1];
-            filteredMessages.push({
-              ...lastMessage,
-              planName: plan.name,
-              planAvatar: plan.avatar || 'https://via.placeholder.com/50', // Default avatar if none exists
-            });
-          }
-        });
+          relevantPlans.forEach(plan => {
+            if (plan.groupChat.length > 0) {
+              const lastMessage = plan.groupChat[plan.groupChat.length - 1];
+              filteredMessages.push({
+                ...lastMessage,
+                planName: plan.name,
+                planAvatar: plan.avatar || 'https://via.placeholder.com/50', // Default avatar if none exists
+              });
+            }
+          });
+        }
+
+        setPlanMessages(filteredMessages);
       }
-
-      setPlanMessages(filteredMessages);
     };
 
     fetchUserPlanMessages();
-  }, []);
+  }, [plans, userPlanIds]);
 
   return (
     <>
       <div className="container">
-        {
-          !aiChatOpen &&
+        {!aiChatOpen && (
           <div className={aiChatOpen ? 'd-none' : 'h-[800px] flex flex-col justify-between'}>
             <div className="bg-mainBg h-screen p-4 text-textPrimary">
               <div>
@@ -89,8 +95,8 @@ export default function Messages() {
                         key={index}
                         className="flex p-4 rounded-lg shadow-lg bg-cardBg cursor-pointer"
                         onClick={() => {
-                          // find the plans
-                          const selectedPlan = data.categories
+                          // Find the selected plan
+                          const selectedPlan = plans.categories
                             .flatMap(category => category.plans)
                             .find(plan => plan.name === msg.planName);
 
@@ -127,20 +133,16 @@ export default function Messages() {
               </div>
             </div>
           </div>
-        }
+        )}
         <AIChat aiChatOpen={aiChatOpen} setAiChatOpen={setAiChatOpen} />
       </div>
-      {
-        isChatOpen &&
-        selectedPlan &&
+      {isChatOpen && selectedPlan && (
         <GroupChat
           isOpen={isChatOpen}
           onClose={() => setIsChatOpen(false)}
           plan={selectedPlan}
-          user={userData}
-          setPlan={setSelectedPlan}
         />
-      }
+      )}
     </>
   );
 }

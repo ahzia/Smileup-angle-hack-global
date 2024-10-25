@@ -1,4 +1,4 @@
-'useClient';
+'use client';
 import Image from "next/image";
 import {
   MdLocationOn,
@@ -13,21 +13,37 @@ import {
 import Modal from "@/components/common/Modal";
 import Members from "@/components/common/Members";
 import { Plan } from "@/models/Plan";
-import { User } from "@/models/User";
-import GroupChat from "./chat";
 import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/redux/store'; // RootState import for typing
+import { joinPlan, leavePlan } from '@/redux/plansSlice'; // Importing thunks from Redux slice
+
+import GroupChat from "./Chat";
 
 interface PlanModalProps {
   isOpen: boolean;
   onClose: () => void;
   plan: Plan;
-  user: User;
-  setUser: (user: User) => void;
 }
 
-const PlanModal: React.FC<PlanModalProps> = ({ isOpen, onClose, plan, user, setUser }) => {
+const PlanModal: React.FC<PlanModalProps> = ({ isOpen, onClose, plan }) => {
   const [isGroupChatOpen, setGroupChatOpen] = useState(false);
-  const [selctedPlan, setSelectedPlan] = useState<Plan | null>(null);
+  const dispatch = useDispatch();
+
+  const user = useSelector((state: RootState) => state.user.loggedInUser); // Access logged-in user
+
+  const isUserJoined = user.plansJoined.includes(plan.plan_id);
+
+  const handleJoinPlan = () => {
+    console.log("Joining plan:", plan.plan_id);
+    dispatch(joinPlan({ planId: plan.plan_id, userId: user.id }));
+    console.log("user", user);
+  };
+
+  const handleLeavePlan = () => {
+    dispatch(leavePlan({ planId: plan.plan_id, userId: user.id }));
+  };
+
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -137,48 +153,43 @@ const PlanModal: React.FC<PlanModalProps> = ({ isOpen, onClose, plan, user, setU
             </section>
           </div>
 
-          {/* Join Button */}
-          {user.plansJoined.includes(plan.plan_id) || user.plansCreated.includes(plan.plan_id) ? (
-            // Show Group and Leave Plan Buttons
-            <div className="bg-cardBg p-4 sticky bottom-0 flex justify-center">
-              <button className="bg-highlight text-white px-4 py-2 rounded-lg hover:bg-[#FF5500] transition-all duration-200"
-                onClick={() => {
-                  console.log("Plan", plan);
-                  setSelectedPlan(plan);
-                  console.log("Selected Plan", selctedPlan);
-                  setGroupChatOpen(true);
-                }}
-              >
-                View Group Chat
-              </button>
+          {/* Join/Leave Buttons */}
+          <div className="bg-cardBg p-4 sticky bottom-0 flex justify-center">
+            {isUserJoined ? (
+              <>
+                <button
+                  className="bg-highlight text-white px-4 py-2 rounded-lg hover:bg-[#FF5500] transition-all duration-200"
+                  onClick={() => setGroupChatOpen(true)}
+                >
+                  View Group Chat
+                </button>
+                <button
+                  className="bg-error text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-all duration-200 ml-4"
+                  onClick={handleLeavePlan}
+                >
+                  Leave Plan
+                </button>
+              </>
+            ) : (
               <button
-                className="bg-error text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-all duration-200 ml-4"
-                onClick={() => {
-                  setUser({
-                    ...user,
-                    plansJoined: user.plansJoined.filter((id) => id !== plan.plan_id)
-                  });
-                }}
-              >
-                Leave Plan
-              </button>
-            </div>)
-            : (<div className="bg-cardBg p-4 sticky bottom-0 flex justify-center">
-              <button className="bg-highlight text-white px-4 py-2 rounded-lg hover:bg-[#FF5500] transition-all duration-200"
-                onClick={() => {
-                  setUser({
-                    ...user,
-                    plansJoined: [...user.plansJoined, plan.plan_id]
-                  });
-                }}
+                className="bg-highlight text-white px-4 py-2 rounded-lg hover:bg-[#FF5500] transition-all duration-200"
+                onClick={handleJoinPlan}
               >
                 Join Plan
               </button>
-            </div>)
-          }
+            )}
+          </div>
         </div>
+
       </Modal>
-      { isGroupChatOpen && selctedPlan && <GroupChat isOpen={isGroupChatOpen} onClose={() => setGroupChatOpen(false)} plan={selctedPlan} user={user} setPlan={setSelectedPlan} />}
+
+      {isGroupChatOpen && (
+        <GroupChat
+          isOpen={isGroupChatOpen}
+          onClose={() => setGroupChatOpen(false)}
+          plan={plan}
+        />
+      )}
     </>
   );
 };

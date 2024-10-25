@@ -3,16 +3,14 @@ import Image from "next/image";
 import { MdLocationOn, MdEmojiEmotions, MdPeople } from "react-icons/md";
 import PlanModal from "./PlanModal";
 import { Plan } from "@/models/Plan";
-import { User } from "@/models/User";
 
 interface PlanCardProps {
   plan: Plan;
-  user: User;
-  setUser: (user: User) => void;
 }
 
-export default function PlanCard({ plan, user, setUser }: PlanCardProps) {
+export default function PlanCard({ plan }: PlanCardProps) {
   const [isModalOpen, setModalOpen] = useState(false);
+
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
@@ -36,12 +34,9 @@ export default function PlanCard({ plan, user, setUser }: PlanCardProps) {
                 </div>
               </div>
             ) : (
-              <div className={`absolute flex top-2 right-2 bg-[#FFF] p-2 rounded-full shadow-lg border-4 ${plan.smiles >= 0 ? "border-green-500" : "border-orange-500"
-                }`}>
-                <MdEmojiEmotions className={`text-lg font-bold ${plan.smiles >= 0 ? "text-green-500" : "text-orange-500"
-                  }`} />
-                <span className={`text-sm font-bold ${plan.smiles >= 0 ? "text-green-500" : "text-orange-500"
-                  }`}>
+              <div className={`absolute flex top-2 right-2 bg-[#FFF] p-2 rounded-full shadow-lg border-4 ${plan.smiles >= 0 ? "border-green-500" : "border-orange-500"}`}>
+                <MdEmojiEmotions className={`text-lg font-bold ${plan.smiles >= 0 ? "text-green-500" : "text-orange-500"}`} />
+                <span className={`text-sm font-bold ${plan.smiles >= 0 ? "text-green-500" : "text-orange-500"}`}>
                   {plan.smiles}
                 </span>
               </div>
@@ -70,8 +65,6 @@ export default function PlanCard({ plan, user, setUser }: PlanCardProps) {
         isOpen={isModalOpen}
         onClose={closeModal}
         plan={plan}
-        user={user}
-        setUser={setUser}
       />
     </>
   );
