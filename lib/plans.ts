@@ -11,6 +11,7 @@ import CyclingAdventure from "../images/cycling.jpg";
 import ChinatownTour from "../images/ChinatownTour.jpg";
 import HawkerCenterTour from "../images/HawkerCenterTour.jpg";
 import LocalCoffeeWorkshop from "../images/LocalCoffeeWorkshop.jpg";
+import { group } from "console";
 
 export const data = {
   community: {
@@ -40,6 +41,11 @@ export const data = {
           is_free: true,
           category: "Health & Wellness",
           image: Yoga,
+          groupChat: [
+            { id: 1, userId: 1, message: "Anyone ready for some morning stretches?", timestamp: "6:30 AM" },
+            { id: 2, userId: 2, message: "I can’t wait! This view will be amazing for yoga.", timestamp: "6:35 AM" },
+            { id: 3, userId: 3, message: "Does anyone have an extra yoga mat?", timestamp: "6:45 AM" },
+          ],
         },
         {
           plan_id: 2,
@@ -57,6 +63,11 @@ export const data = {
           is_free: true,
           category: "Networking",
           image: DigitalNomads,
+          groupChat: [
+            { id: 1, userId: 2, message: "Excited to meet some fellow nomads!", timestamp: "2:45 PM" },
+            { id: 2, userId: 1, message: "Anyone bringing their laptop? I’ll be working after the meetup.", timestamp: "2:50 PM" },
+            { id: 3, userId: 3, message: "I’m grabbing a coffee before the event. See you soon!", timestamp: "2:55 PM" },
+          ],
         },
         {
           plan_id: 3,
@@ -74,6 +85,11 @@ export const data = {
           is_free: true,
           category: "Entertainment",
           image: MovieNight,
+          groupChat: [
+            { id: 1, userId: 1, message: "Can’t wait for some classic sci-fi!", timestamp: "7:30 PM" },
+            { id: 2, userId: 2, message: "Is it okay if I bring snacks?", timestamp: "7:35 PM" },
+            { id: 3, userId: 3, message: "Which movies are we watching?", timestamp: "7:40 PM" },
+          ],
         },
       ],
     },
@@ -97,6 +113,11 @@ export const data = {
           price: "$30",
           category: "Cultural Exploration",
           image: ChinatownTour,
+          groupChat: [
+            { id: 1, userId: 1, message: "Who else is excited to explore Chinatown?", timestamp: "9:00 AM" },
+            { id: 2, userId: 2, message: "I’ve been looking forward to this tour all week!", timestamp: "9:10 AM" },
+            { id: 3, userId: 3, message: "Is there anything specific we should bring?", timestamp: "9:20 AM" },
+          ],
         },
         {
           plan_id: 5,
@@ -115,6 +136,11 @@ export const data = {
           price: "$50",
           category: "Food & Beverage",
           image: HawkerCenterTour,
+          groupChat: [
+            { id: 1, userId: 1, message: "I hope we get to try some Hainanese chicken rice!", timestamp: "5:30 PM" },
+            { id: 2, userId: 2, message: "Can’t wait to try all the local dishes!", timestamp: "5:35 PM" },
+            { id: 3, userId: 3, message: "Is there a specific food stall we’re starting at?", timestamp: "5:40 PM" },
+          ],
         },
         {
           plan_id: 6,
@@ -132,6 +158,11 @@ export const data = {
           is_free: true,
           category: "Arts & Culture",
           image: PhotographyWalk,
+          groupChat: [
+            { id: 1, userId: 1, message: "What type of camera are you bringing?", timestamp: "4:45 PM" },
+            { id: 2, userId: 2, message: "I’m bringing my DSLR. Hope to get some great city shots!", timestamp: "4:50 PM" },
+            { id: 3, userId: 3, message: "Looking forward to capturing the skyline at sunset!", timestamp: "4:55 PM" },
+          ],
         },
       ],
     },
@@ -155,6 +186,11 @@ export const data = {
           price: "$40",
           category: "Food & Beverage",
           image: CookingWorkshop,
+          groupChat: [
+            { id: 1, userId: 1, message: "I’m so excited to learn how to cook local dishes!", timestamp: "3:30 PM" },
+            { id: 2, userId: 2, message: "This is my first time in a cooking class, any tips?", timestamp: "3:40 PM" },
+            { id: 3, userId: 3, message: "I hope we get the recipes to try at home!", timestamp: "3:50 PM" },
+          ],
         },
         {
           plan_id: 8,
@@ -173,6 +209,11 @@ export const data = {
           price: "$20",
           category: "Food & Beverage",
           image: LocalCoffeeWorkshop,
+          groupChat: [
+            { id: 1, userId: 1, message: "I’m so excited to learn how to cook local dishes!", timestamp: "3:30 PM" },
+            { id: 2, userId: 2, message: "This is my first time in a cooking class, any tips?", timestamp: "3:40 PM" },
+            { id: 3, userId: 3, message: "I hope we get the recipes to try at home!", timestamp: "3:50 PM" },
+          ],
         },
       ],
     },
@@ -180,7 +221,7 @@ export const data = {
       title: "Plans for Tonight",
       plans: [
         {
-          plan_id: 11,
+          plan_id: 9,
           name: "Karaoke Night",
           description:
             "Sing your heart out with fellow residents at a fun-filled karaoke night!",
@@ -195,6 +236,55 @@ export const data = {
           is_free: true,
           category: "Entertainment",
           image: KaraokeNight,
+          groupChat: [
+            { id: 1, userId: 1, message: "I’ve been practicing my favorite song all week!", timestamp: "8:45 PM" },
+            { id: 2, userId: 2, message: "What’s everyone planning to sing tonight?", timestamp: "8:50 PM" },
+            { id: 3, userId: 3, message: "I’m ready to show off my karaoke skills!", timestamp: "8:55 PM" },
+          ],
+        },
+        {
+          plan_id: 10,
+          name: "Night Run by the Bay",
+          description:
+            "Join fellow fitness enthusiasts for a refreshing night run around Marina Bay.",
+          time: "9:00 PM - 10:00 PM",
+          date: "2024-10-21",
+          location: "Meet at LYF Lobby",
+          created_by: "You",
+          smiles: 0,
+          status: "Joined",
+          participants: 4,
+          max_participants: 10,
+          is_free: true,
+          category: "Fitness",
+          image: NightRun,
+          groupChat: [
+            { id: 1, userId: 1, message: "Ready to hit the pavement!", timestamp: "8:30 PM" },
+            { id: 2, userId: 2, message: "I hope we get to see some cool city lights during the run.", timestamp: "8:35 PM" },
+            { id: 3, userId: 3, message: "I’ll bring some water, who’s with me?", timestamp: "8:40 PM" },
+          ],
+        },
+        {
+          plan_id: 11,
+          name: "Board Games Night",
+          description:
+            "Challenge your neighbors to a night of strategy and fun with classic board games.",
+          time: "7:00 PM - 9:00 PM",
+          date: "2024-10-23",
+          location: "Bond Kitchen",
+          created_by: "You",
+          smiles: 10,
+          status: "Created",
+          participants: 3,
+          max_participants: 8,
+          is_free: true,
+          category: "Entertainment",
+          image: BoardGames,
+          groupChat: [
+            { id: 1, userId: 1, message: "Who’s up for a game of Monopoly tonight?", timestamp: "6:30 PM" },
+            { id: 2, userId: 2, message: "I’ll bring my favorite board games for everyone to enjoy.", timestamp: "6:35 PM" },
+            { id: 3, userId: 3, message: "I’m in for a game of Scrabble!", timestamp: "6:40 PM" },
+          ],
         },
       ],
     },
@@ -218,6 +308,10 @@ export const data = {
           price: "$25",
           category: "Food & Beverage",
           image: WeekendBrunch,
+          groupChat: [
+            { id: 1, userId: 1, message: "I can’t wait to try the brunch menu!", timestamp: "9:30 AM" },
+            { id: 2, userId: 2, message: "I heard they have amazing pancakes!", timestamp: "9:35 AM" },
+          ]
         },
         {
           plan_id: 13,
@@ -236,83 +330,13 @@ export const data = {
           price: "$15",
           category: "Fitness",
           image: CyclingAdventure,
+          groupChat: [
+            { id: 1, userId: 1, message: "I’m bringing my bike for the ride!", timestamp: "7:30 AM" },
+            { id: 2, userId: 2, message: "I hope we get to see the city skyline from the Barrage.", timestamp: "7:35 AM" },
+            { id: 3, userId: 3, message: "Is there a place to rent bikes nearby?", timestamp: "7:40 AM" },
+          ],
         },
       ],
     },
   ],
 };
-
-export const userPlans = {
-  "created": [
-      {
-        plan_id: 1,
-        name: "Night Run by the Bay",
-        description:
-          "Join fellow fitness enthusiasts for a refreshing night run around Marina Bay.",
-        time: "9:00 PM - 10:00 PM",
-        date: "2024-10-21",
-        location: "Meet at LYF Lobby",
-        created_by: "You",
-        smiles: 0,
-        status: "Joined",
-        participants: 4,
-        max_participants: 10,
-        is_free: true,
-        category: "Fitness",
-        image: NightRun,
-      },
-      {
-        plan_id: 2,
-        name: "Board Games Night",
-        description:
-          "Challenge your neighbors to a night of strategy and fun with classic board games.",
-        time: "7:00 PM - 9:00 PM",
-        date: "2024-10-23",
-        location: "Bond Kitchen",
-        created_by: "You",
-        smiles: 10,
-        status: "Created",
-        participants: 3,
-        max_participants: 8,
-        is_free: true,
-        category: "Entertainment",
-        image: BoardGames,
-      },
-    ],
-  "Joined":[
-      {
-        plan_id: 1,
-        name: "Photography Walk: Explore Singapore",
-        description:
-          "Capture the beauty of Singapore’s urban landscape with a guided photography walk.",
-        time: "5:00 PM - 7:00 PM",
-        date: "2024-10-22",
-        location: "Meet at LYF Lobby",
-        created_by: "User123",
-        smiles: 10,
-        status: "Open",
-        participants: 7,
-        max_participants: 10,
-        is_free: true,
-        category: "Arts & Culture",
-        image: PhotographyWalk,
-      },
-      {
-        plan_id: 2,
-        name: "Morning Yoga at the Rooftop",
-        description:
-          "Start your day with an energizing yoga session on our scenic rooftop. Open to all skill levels.",
-        time: "7:00 AM - 8:00 AM",
-        date: "2024-10-21",
-        location: "Rooftop",
-        created_by: "LYF Funan",
-        smiles: 0,
-        status: "Open",
-        participants: 12,
-        max_participants: 20,
-        is_free: true,
-        category: "Health & Wellness",
-        image: Yoga,
-      },
-    ]
-  }

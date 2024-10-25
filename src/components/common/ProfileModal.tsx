@@ -40,15 +40,15 @@ export default function Profile({ isOpen, onClose, user }) {
             <h2 className="text-xl font-bold mb-4 text-textPrimary">Community Stats</h2>
             <div className="flex justify-between">
               <div className="flex flex-col items-center">
-                <span className="text-2xl text-highlight font-semibold">12</span>
+                <span className="text-2xl text-highlight font-semibold">{user.friends}</span>
                 <span className="text-sm text-textSecondary">Friends</span>
               </div>
               <div className="flex flex-col items-center">
-                <span className="text-2xl text-highlight font-semibold">5</span>
+                <span className="text-2xl text-highlight font-semibold">{user.plansJoined.length}</span>
                 <span className="text-sm text-textSecondary">Plans Joined</span>
               </div>
               <div className="flex flex-col items-center">
-                <span className="text-2xl text-highlight font-semibold">3</span>
+                <span className="text-2xl text-highlight font-semibold">{user.plansCreated.length}</span>
                 <span className="text-sm text-textSecondary">Plans Created</span>
               </div>
             </div>
@@ -58,18 +58,13 @@ export default function Profile({ isOpen, onClose, user }) {
           <div className="bg-cardBg w-11/12 p-4 mt-6 rounded-lg">
             <h2 className="text-xl font-bold text-textPrimary mb-4">Recent Activities</h2>
             <ul className="space-y-4">
-              <li className="flex justify-between items-center text-textSecondary">
-                <span>Joined "Beach Volleyball"</span>
-                <span className="text-highlight">2 hours ago</span>
-              </li>
-              <li className="flex justify-between items-center text-textSecondary">
-                <span>Earned 20 Smiles from "AI Chat"</span>
-                <span className="text-highlight">Yesterday</span>
-              </li>
-              <li className="flex justify-between items-center text-textSecondary">
-                <span>Added 3 new friends</span>
-                <span className="text-highlight">2 days ago</span>
-              </li>
+              {user.recentActivities.map((activity, index) => (
+                <li className="flex justify-between items-center text-textSecondary" key={index}>
+                  <span>
+                    {activity.activity}
+                  </span>
+                  <span className="text-highlight">{activity.time}</span>
+                </li>))}
             </ul>
           </div>
           {/* Settings Button */}
