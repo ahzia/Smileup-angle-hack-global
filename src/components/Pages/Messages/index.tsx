@@ -4,6 +4,8 @@ import AIChat from './AiChat';
 import GroupChat from '../Plans/Chat';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store'; // Import RootState for typing
+import Image from 'next/image';
+import { HiOutlineChatAlt2 } from 'react-icons/hi';
 
 export default function Messages() {
   const [aiChatOpen, setAiChatOpen] = useState(false);
@@ -21,6 +23,7 @@ export default function Messages() {
   ]);
 
   const [planMessages, setPlanMessages] = useState([]);
+  const [activeTab, setActiveTab] = useState(0); // State to track the active tab
 
   // Get the logged-in user and the plans from the Redux store
   const user = useSelector((state: RootState) => state.user.loggedInUser);
@@ -43,7 +46,7 @@ export default function Messages() {
               filteredMessages.push({
                 ...lastMessage,
                 planName: plan.name,
-                planAvatar: plan.avatar || 'https://via.placeholder.com/50', // Default avatar if none exists
+                planAvatar: plan.image || 'https://via.placeholder.com/50', // Default avatar if none exists
               });
             }
           });
@@ -63,58 +66,69 @@ export default function Messages() {
           <div className={aiChatOpen ? 'd-none' : 'h-[800px] flex flex-col justify-between'}>
             <div className="bg-mainBg h-screen p-4 text-textPrimary">
               <div>
-                {/* Random User Messages */}
+                {/* Message Tabs */}
                 <h2 className="text-xl font-bold mb-2">Messages</h2>
-                <div className="space-y-4">
-                  {messages.map((msg) => (
-                    <div key={msg.id} className={`flex p-4 rounded-lg shadow-lg ${msg.ai ? 'bg-highlight' : 'bg-cardBg'}`}>
-                      <div className="flex-grow">
-                        <div className="flex items-center mb-2 gap-3">
-                          <img src={msg.avatar} alt="User Avatar" className="w-10 h-10 rounded-full" />
-                          <div className="flex-grow">
-                            <h3 className={`font-bold ${msg.ai ? 'text-mainBg' : 'text-textPrimary'}`}>
-                              {msg.user}
-                            </h3>
-                            <p className={`text-sm ${msg.ai ? 'text-mainBg' : 'text-textSecondary'}`}>
-                              {msg.message}
-                            </p>
-                          </div>
-                        </div>
-                        <p className="text-xs text-textSecondary">{msg.time}</p>
-                      </div>
-                    </div>
-                  ))}
+                <div className="flex space-x-4 mb-4">
+                  <button
+                    className={`px-4 py-2 rounded-lg transition duration-200 ${activeTab === 0 ? 'bg-highlight text-mainBg' : 'bg-cardBg text-textPrimary'}`}
+                    onClick={() => setActiveTab(0)}
+                  >
+                    User Messages
+                  </button>
+                  <button
+                    className={`px-4 py-2 rounded-lg transition duration-200 ${activeTab === 1 ? 'bg-highlight text-mainBg' : 'bg-cardBg text-textPrimary'}`}
+                    onClick={() => setActiveTab(1)}
+                  >
+                    Plan Messages
+                  </button>
                 </div>
 
-                {/* User Plan Messages */}
-                <div className="mt-8">
-                  <h2 className="text-xl font-bold mb-2">Your Plan Messages</h2>
-                  <div className="space-y-4">
-                    {planMessages.map((msg, index) => (
-                      <div
-                        key={index}
-                        className="flex p-4 rounded-lg shadow-lg bg-cardBg cursor-pointer"
-                        onClick={() => {
-                          // Find the selected plan
-                          const selectedPlan = plans.categories
-                            .flatMap(category => category.plans)
-                            .find(plan => plan.name === msg.planName);
-
-                          setSelectedPlan(selectedPlan);
-                          setIsChatOpen(true);
-                        }}
-                      >
-                        <div className="flex items-center gap-3">
-                          <img src={msg.planAvatar} alt="Plan Avatar" className="w-10 h-10 rounded-full" />
-                          <div className="flex-grow">
-                            <h3 className="font-bold text-textPrimary">{msg.planName}</h3>
-                            <p className="text-sm text-textSecondary">{msg.message}</p>
-                          </div>
+                {/* Render Messages based on the active tab */}
+                <div className="space-y-4">
+                  {activeTab === 0 && messages.map((msg, index) => (
+                    <div
+                      key={index}
+                      className="flex p-4 rounded-lg shadow-lg bg-cardBg cursor-pointer"
+                      onClick={() => {
+                        setSelectedPlan(null); // Set to null since it's a user message
+                        setIsChatOpen(true);
+                      }}
+                    >
+                      <div className="flex items-center gap-3">
+                        <img src={msg.avatar} alt="User Avatar" className="w-10 h-10 rounded-full" />
+                        <div className="flex-grow">
+                          <h3 className="font-bold text-textPrimary">{msg.user}</h3>
+                          <p className="text-sm text-textSecondary">{msg.message}</p>
                         </div>
-                        <p className="text-xs text-textSecondary">{msg.time}</p>
                       </div>
-                    ))}
-                  </div>
+                      <p className="text-xs text-textSecondary">{msg.time}</p>
+                    </div>
+                  ))}
+
+                  {activeTab === 1 && planMessages.map((msg, index) => (
+                    <div
+                      key={index}
+                      className="flex p-4 rounded-lg shadow-lg bg-cardBg cursor-pointer"
+                      onClick={() => {
+                        // Find the selected plan
+                        const selectedPlan = plans.categories
+                          .flatMap(category => category.plans)
+                          .find(plan => plan.name === msg.planName);
+
+                        setSelectedPlan(selectedPlan);
+                        setIsChatOpen(true);
+                      }}
+                    >
+                      <div className="flex items-center gap-3">
+                        <Image src={msg.planAvatar} alt="Plan Avatar" className="w-10 h-10 rounded-full" width={40} height={40} />
+                        <div className="flex-grow">
+                          <h3 className="font-bold text-textPrimary">{msg.planName}</h3>
+                          <p className="text-sm text-textSecondary">{msg.message}</p>
+                        </div>
+                      </div>
+                      <p className="text-xs text-textSecondary">{msg.time}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -122,14 +136,18 @@ export default function Messages() {
             {/* AI Chat Section */}
             <div className="mb-4">
               <h2 className="text-xl font-bold mb-2">AI Chat</h2>
-              <div className="bg-cardBg rounded-lg p-4 shadow-lg">
-                <p className="text-textPrimary">👋 Hello! How can I help you today?</p>
-                <button
-                  className="mt-2 bg-highlight text-mainBg py-2 px-4 rounded-lg transition duration-200 hover:bg-opacity-80"
-                  onClick={() => setAiChatOpen(true)}
-                >
-                  Start a conversation
-                </button>
+              <div className="bg-cardBg rounded-lg p-4 shadow-lg flex items-center justify-between">
+                <div className="flex flex-col">
+                  <h3 className="text-lg font-bold">SmileUp AI</h3>
+                  <p className="text-textPrimary">👋 Hello! How can I help you today?</p>
+                  <button
+                    className="mt-2 bg-highlight text-mainBg py-2 px-4 rounded-lg transition duration-200 hover:bg-opacity-80"
+                    onClick={() => setAiChatOpen(true)}
+                  >
+                    Start a conversation
+                  </button>
+                </div>
+                <HiOutlineChatAlt2 className="w-10 h-10 text-highlight" />
               </div>
             </div>
           </div>

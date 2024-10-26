@@ -1,22 +1,20 @@
-'use client';
 import { useState, useCallback } from "react";
 import { MdSend } from "react-icons/md";
 import Image from "next/image";
 import { users } from "../../../../lib/user";
 import Modal from "@/components/common/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { addChatMessage } from "@/redux/plansSlice"; // Import the action to add chat messages
-import { RootState } from "@/redux/store"; // Import RootState type for typings
+import { addChatMessage } from "@/redux/plansSlice";
+import { RootState } from "@/redux/store";
 
 const GroupChat = ({ isOpen, onClose, plan }) => {
   const [newMessage, setNewMessage] = useState("");
   const dispatch = useDispatch();
-  const user = useSelector((state: RootState) => state.user.loggedInUser); // Get the current logged-in user
+  const user = useSelector((state: RootState) => state.user.loggedInUser);
 
   const handleSendMessage = useCallback(() => {
     if (!newMessage) return;
 
-    // Dispatch the action to add a chat message
     dispatch(
       addChatMessage({
         planId: plan.plan_id,
@@ -35,55 +33,55 @@ const GroupChat = ({ isOpen, onClose, plan }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="flex flex-col justify-between h-screen bg-mainBg text-white p-4">
-        {/* Chat Header */}
-        <header className="bg-secondary p-4 rounded-t-lg shadow-lg">
-          <h2 className="text-2xl font-bold text-highlight">Plan Group Chat</h2>
-          <p className="text-sm text-textSecondary">
-            Chat with fellow participants about the plan
-          </p>
+      <div className="flex flex-col justify-between h-screen px-8 pt-16 backdrop-blur-md bg-[rgba(26,16,52,0.7)] text-white rounded-3xl shadow-2xl overflow-hidden">
+        <header className="bg-[rgba(46,42,90,0.8)] px-6 py-4 rounded-full shadow-lg flex flex-col items-center mb-6">
+          <h2 className="text-3xl font-bold text-highlight tracking-wide">Plan Group Chat</h2>
+          <p className="text-sm text-textSecondary mt-1">Connect with your group on this plan</p>
         </header>
 
         {/* Chat Messages */}
-        <section className="flex-1 overflow-y-auto mt-4 p-4 bg-cardBg rounded-lg shadow-lg space-y-4">
+        <section className="flex-1 overflow-y-auto p-4 space-y-6 custom-scrollbar">
           {plan?.groupChat.map((msg) => {
             const sender = getUserById(msg.userId);
+            const isUser = msg.userId === user.id;
             return (
-              <div key={msg.id} className={`flex ${msg.userId === user.id ? 'justify-end' : 'justify-start'}`}>
-                {msg.userId !== user.id && sender && (
-                  <div className="flex items-start mr-3">
-                    <Image
-                      src={sender.profilePic}
-                      alt={sender.name}
-                      width={40}
-                      height={40}
-                      className="rounded-full border-2 border-white"
-                    />
-                  </div>
+              <div key={msg.id} className={`flex ${isUser ? 'justify-end' : 'justify-start'} items-center relative`}>
+                {!isUser && sender && (
+                  <Image
+                    src={sender.profilePic}
+                    alt={sender.name}
+                    width={40}
+                    height={40}
+                    className="object-cover border-2 border-cardBgLight rounded-full h-10 w-10 mr-2"
+                  />
                 )}
-                <div className={`max-w-xs p-3 rounded-lg ${msg.userId === user.id ? 'bg-highlight' : 'bg-secondary'} text-sm text-textPrimary`}>
-                  <p className="font-semibold">{msg.userId === user.id ? 'You' : sender?.name}</p>
-                  <p>{msg.message}</p>
-                  <span className="text-xs text-textSecondary block mt-1">{msg.timestamp}</span>
+                <div
+                  className={`relative max-w-xs px-4 py-3 rounded-2xl shadow-xl text-textPrimary ${isUser
+                    ? 'bg-gradient-to-br from-[#FF6900] to-[#FF9800] text-white shadow-orange-500/30'
+                    : 'bg-gradient-to-br from-secondary to-[#6c63ff] shadow-indigo-700/30'
+                    }`}
+                >
+                  <p className="font-medium mb-1">{isUser ? 'You' : sender?.name}</p>
+                  <p className="text-sm">{msg.message}</p>
+                  <span className="text-xs text- block mt-1">{msg.timestamp}</span>
                 </div>
               </div>
             );
           })}
         </section>
 
-        {/* Chat Input */}
-        <footer className="bg-cardBgLight p-4 rounded-b-lg flex items-center">
+        <footer className="p-4 rounded-full flex items-center shadow-lg mt-6">
           <input
             type="text"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             placeholder="Type your message..."
-            className="flex-1 p-3 rounded-lg bg-secondary text-white placeholder-textSecondary focus:outline-none"
+            className="flex-1 p-4 rounded-full bg-[rgba(46,42,90,0.7)] text-white placeholder-textSecondary focus:outline-none focus:ring-2 focus:ring-highlight shadow-inner"
             aria-label="Message input"
           />
           <button
             onClick={handleSendMessage}
-            className="ml-4 p-3 bg-highlight text-white rounded-full hover:bg-orange-600 transition duration-300"
+            className="ml-4 p-3 bg-highlight text-white rounded-full hover:bg-orange-600 transition duration-300 hover:scale-105 shadow-lg hover:shadow-orange-500/50 focus:outline-none focus:ring-4 focus:ring-orange-600 animate-pulse"
             aria-label="Send message"
             type="button"
           >
