@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import AIChat from './AiChat';
 import GroupChat from '../Plans/Chat';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/redux/store'; // Import RootState for typing
+import { RootState } from '@/redux/store';
 import Image from 'next/image';
 import { HiOutlineChatAlt2 } from 'react-icons/hi';
 
@@ -23,113 +23,153 @@ export default function Messages() {
   ]);
 
   const [planMessages, setPlanMessages] = useState([]);
-  const [activeTab, setActiveTab] = useState(0); // State to track the active tab
+  const [createdPlanMessages, setCreatedPlanMessages] = useState([]);
+  const [activeTab, setActiveTab] = useState(0);
 
-  // Get the logged-in user and the plans from the Redux store
   const user = useSelector((state: RootState) => state.user.loggedInUser);
-  const plans = useSelector((state: RootState) => state.plans); // Assuming plans are stored in state.plans.data
+  const plans = useSelector((state: RootState) => state.plans);
 
-  const userPlanIds = user.plansJoined;
+  const { plansJoined, plansCreated } = user;
 
   useEffect(() => {
-    const fetchUserPlanMessages = () => {
-      const filteredMessages = [];
+    const fetchMessages = () => {
+      const joinedMessages = [];
+      const createdMessages = [];
 
-      // Filter plans by the user's joined plan IDs
       if (plans) {
         for (const category of plans.categories) {
-          const relevantPlans = category.plans.filter(plan => userPlanIds.includes(plan.plan_id));
+          const joinedPlans = category.plans.filter(plan => plansJoined.includes(plan.plan_id));
+          const createdPlans = category.plans.filter(plan => plansCreated.includes(plan.plan_id));
 
-          relevantPlans.forEach(plan => {
+          // Process joined plans' messages
+          joinedPlans.forEach(plan => {
             if (plan.groupChat.length > 0) {
               const lastMessage = plan.groupChat[plan.groupChat.length - 1];
-              filteredMessages.push({
+              joinedMessages.push({
                 ...lastMessage,
                 planName: plan.name,
-                planAvatar: plan.image || 'https://via.placeholder.com/50', // Default avatar if none exists
+                planAvatar: plan.image || 'https://via.placeholder.com/50',
+              });
+            }
+          });
+
+          // Process created plans' messages
+          createdPlans.forEach(plan => {
+            if (plan.groupChat.length > 0) {
+              const lastMessage = plan.groupChat[plan.groupChat.length - 1];
+              createdMessages.push({
+                ...lastMessage,
+                planName: plan.name,
+                planAvatar: plan.image || 'https://via.placeholder.com/50',
               });
             }
           });
         }
-
-        setPlanMessages(filteredMessages);
+        setPlanMessages(joinedMessages);
+        setCreatedPlanMessages(createdMessages);
       }
     };
 
-    fetchUserPlanMessages();
-  }, [plans, userPlanIds]);
+    fetchMessages();
+  }, [plans, plansJoined, plansCreated]);
 
   return (
     <>
       <div className="container">
         {!aiChatOpen && (
-          <div className={aiChatOpen ? 'd-none' : 'h-[800px] flex flex-col justify-between'}>
+          <div className="h-[800px] flex flex-col justify-between">
             <div className="bg-mainBg h-screen p-4 text-textPrimary">
-              <div>
-                {/* Message Tabs */}
-                <h2 className="text-xl font-bold mb-2">Messages</h2>
-                <div className="flex space-x-4 mb-4">
-                  <button
-                    className={`px-4 py-2 rounded-lg transition duration-200 ${activeTab === 0 ? 'bg-highlight text-mainBg' : 'bg-cardBg text-textPrimary'}`}
-                    onClick={() => setActiveTab(0)}
+              <h2 className="text-xl font-bold mb-2">Messages</h2>
+              <div className="flex space-x-4 mb-4">
+                <button
+                  className={`px-4 py-2 rounded-lg transition duration-200 ${activeTab === 0 ? 'bg-highlight text-mainBg' : 'bg-cardBg text-textPrimary'}`}
+                  onClick={() => setActiveTab(0)}
+                >
+                  Joined
+                </button>
+                <button
+                  className={`px-4 py-2 rounded-lg transition duration-200 ${activeTab === 1 ? 'bg-highlight text-mainBg' : 'bg-cardBg text-textPrimary'}`}
+                  onClick={() => setActiveTab(1)}
+                >
+                  Created
+                </button>
+                <button
+                  className={`px-4 py-2 rounded-lg transition duration-200 ${activeTab === 2 ? 'bg-highlight text-mainBg' : 'bg-cardBg text-textPrimary'}`}
+                  onClick={() => setActiveTab(2)}
+                >
+                  Friends
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                {/* Joined Plans Messages */}
+                {activeTab === 0 && planMessages.map((msg, index) => (
+                  <div
+                    key={index}
+                    className="flex p-4 rounded-lg shadow-lg bg-cardBg cursor-pointer"
+                    onClick={() => {
+                      const selectedPlan = plans.categories
+                        .flatMap(category => category.plans)
+                        .find(plan => plan.name === msg.planName);
+                      setSelectedPlan(selectedPlan);
+                      setIsChatOpen(true);
+                    }}
                   >
-                    User Messages
-                  </button>
-                  <button
-                    className={`px-4 py-2 rounded-lg transition duration-200 ${activeTab === 1 ? 'bg-highlight text-mainBg' : 'bg-cardBg text-textPrimary'}`}
-                    onClick={() => setActiveTab(1)}
+                    <div className="flex items-center gap-3">
+                      <Image src={msg.planAvatar} alt="Plan Avatar" className="w-10 h-10 rounded-full" width={40} height={40} />
+                      <div className="flex-grow">
+                        <h3 className="font-bold text-textPrimary">{msg.planName}</h3>
+                        <p className="text-sm text-textSecondary">{msg.message}</p>
+                      </div>
+                    </div>
+                    <p className="text-xs text-textSecondary">{msg.time}</p>
+                  </div>
+                ))}
+
+                {/* Created Plans Messages */}
+                {activeTab === 1 && createdPlanMessages.map((msg, index) => (
+                  <div
+                    key={index}
+                    className="flex p-4 rounded-lg shadow-lg bg-cardBg cursor-pointer"
+                    onClick={() => {
+                      const selectedPlan = plans.categories
+                        .flatMap(category => category.plans)
+                        .find(plan => plan.name === msg.planName);
+                      setSelectedPlan(selectedPlan);
+                      setIsChatOpen(true);
+                    }}
                   >
-                    Plan Messages
-                  </button>
-                </div>
-
-                {/* Render Messages based on the active tab */}
-                <div className="space-y-4">
-                  {activeTab === 0 && messages.map((msg, index) => (
-                    <div
-                      key={index}
-                      className="flex p-4 rounded-lg shadow-lg bg-cardBg cursor-pointer"
-                      onClick={() => {
-                        setSelectedPlan(null); // Set to null since it's a user message
-                        setIsChatOpen(true);
-                      }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <img src={msg.avatar} alt="User Avatar" className="w-10 h-10 rounded-full" />
-                        <div className="flex-grow">
-                          <h3 className="font-bold text-textPrimary">{msg.user}</h3>
-                          <p className="text-sm text-textSecondary">{msg.message}</p>
-                        </div>
+                    <div className="flex items-center gap-3">
+                      <Image src={msg.planAvatar} alt="Plan Avatar" className="w-10 h-10 rounded-full" width={40} height={40} />
+                      <div className="flex-grow">
+                        <h3 className="font-bold text-textPrimary">{msg.planName}</h3>
+                        <p className="text-sm text-textSecondary">{msg.message}</p>
                       </div>
-                      <p className="text-xs text-textSecondary">{msg.time}</p>
                     </div>
-                  ))}
+                    <p className="text-xs text-textSecondary">{msg.time}</p>
+                  </div>
+                ))}
 
-                  {activeTab === 1 && planMessages.map((msg, index) => (
-                    <div
-                      key={index}
-                      className="flex p-4 rounded-lg shadow-lg bg-cardBg cursor-pointer"
-                      onClick={() => {
-                        // Find the selected plan
-                        const selectedPlan = plans.categories
-                          .flatMap(category => category.plans)
-                          .find(plan => plan.name === msg.planName);
-
-                        setSelectedPlan(selectedPlan);
-                        setIsChatOpen(true);
-                      }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <Image src={msg.planAvatar} alt="Plan Avatar" className="w-10 h-10 rounded-full" width={40} height={40} />
-                        <div className="flex-grow">
-                          <h3 className="font-bold text-textPrimary">{msg.planName}</h3>
-                          <p className="text-sm text-textSecondary">{msg.message}</p>
-                        </div>
+                {/* Friends Messages */}
+                {activeTab === 2 && messages.map((msg, index) => (
+                  <div
+                    key={index}
+                    className="flex p-4 rounded-lg shadow-lg bg-cardBg cursor-pointer"
+                    onClick={() => {
+                      setSelectedPlan(null);
+                      setIsChatOpen(true);
+                    }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <img src={msg.avatar} alt="User Avatar" className="w-10 h-10 rounded-full" />
+                      <div className="flex-grow">
+                        <h3 className="font-bold text-textPrimary">{msg.user}</h3>
+                        <p className="text-sm text-textSecondary">{msg.message}</p>
                       </div>
-                      <p className="text-xs text-textSecondary">{msg.time}</p>
                     </div>
-                  ))}
-                </div>
+                    <p className="text-xs text-textSecondary">{msg.time}</p>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -152,15 +192,17 @@ export default function Messages() {
             </div>
           </div>
         )}
+
         <AIChat aiChatOpen={aiChatOpen} setAiChatOpen={setAiChatOpen} />
+
+        {isChatOpen && selectedPlan && (
+          <GroupChat
+            isOpen={isChatOpen}
+            onClose={() => setIsChatOpen(false)}
+            plan={selectedPlan}
+          />
+        )}
       </div>
-      {isChatOpen && selectedPlan && (
-        <GroupChat
-          isOpen={isChatOpen}
-          onClose={() => setIsChatOpen(false)}
-          plan={selectedPlan}
-        />
-      )}
     </>
   );
 }

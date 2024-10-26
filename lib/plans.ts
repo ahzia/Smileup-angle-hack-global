@@ -11,7 +11,6 @@ import CyclingAdventure from "../images/cycling.jpg";
 import ChinatownTour from "../images/ChinatownTour.jpg";
 import HawkerCenterTour from "../images/HawkerCenterTour.jpg";
 import LocalCoffeeWorkshop from "../images/LocalCoffeeWorkshop.jpg";
-import { group } from "console";
 
 export const data = {
   community: {
