@@ -24,16 +24,16 @@ export default function Navbar() {
           <BiSolidGift />
         </NavItem>
 
-        <NavItem href="/messages" isActive={isActive("/messages")}>
-          <AiFillMessage />
-        </NavItem>
-
         <NavItem href="/missions" isActive={isActive("/missions")}>
           <IoLogoGameControllerB />
         </NavItem>
 
         <NavItem href="/meet" isActive={isActive("/meet")}>
           <FaUserFriends />
+        </NavItem>
+
+        <NavItem href="/messages" isActive={isActive("/messages")}>
+          <AiFillMessage />
         </NavItem>
       </ul>
     </nav>
