@@ -244,7 +244,7 @@ export const data = {
         },
         {
           plan_id: 10,
-          name: "Night Run by the Bay",
+          name: "Morning Run by the Bay",
           description:
             "Join fellow fitness enthusiasts for a refreshing night run around Marina Bay.",
           time: "9:00 PM - 10:00 PM",
