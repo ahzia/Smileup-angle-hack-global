@@ -7,7 +7,7 @@ import PlansCategories from "./PlansCategories";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import AIChat from "../Messages/AiChat";
-import { MdChat } from "react-icons/md";
+import { TbMessageChatbotFilled } from "react-icons/tb";
 
 export default function Plans() {
   const user = useSelector((state: RootState) => state.user.loggedInUser);
@@ -20,29 +20,38 @@ export default function Plans() {
 
   return (
     <div className="container mx-auto pb-14">
+      {/* AI Chat Button and Main Page */}
       {!aiChatOpen && (
         <>
-          <div className="relative profile-background">
-            {/* Profile Section */}
+          {/* Profile Section with Background */}
+          <div className={`relative profile-background ${aiChatOpen ? "opacity-50" : ""}`}>
             <div className="relative z-10 p-5">
               <MyProfile user={user} />
             </div>
-            {/* SearchBar with partial overlay effect */}
             <div className="relative z-10 px-5 -mt-8">
               <SearchBar onSearch={handleSearch} />
             </div>
           </div>
+
+          {/* Plans Section */}
           <div className="px-4 pt-5">
             <PlansCategories categories={categories} />
           </div>
+
+          {/* AI Chat Icon Button */}
           <div
             onClick={() => setAiChatOpen(true)}
-            className="fixed bottom-28 right-5 z-50 p-3 bg-highlight text-white rounded-full shadow-lg hover:bg-highlight-dark focus:outline-none focus:ring-2 focus:ring-highlight"
+            className="fixed bottom-28 right-5 z-50 p-2 bg-highlight text-white rounded-full shadow-lg transform transition-all duration-300 ease-in-out hover:bg-highlight-dark hover:scale-105 focus:outline-none focus:ring-2 focus:ring-highlight border-4 border-white animate-pulse"
+            aria-label="Open AI Chat"
+            role="button"
+            tabIndex={0}
           >
-            <MdChat size={30} />
+            <TbMessageChatbotFilled size={40} />
           </div>
         </>
       )}
+
+      {/* AI Chat Component */}
       <AIChat aiChatOpen={aiChatOpen} setAiChatOpen={setAiChatOpen} />
     </div>
   );
