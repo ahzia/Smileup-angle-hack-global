@@ -55,7 +55,7 @@ export default function Modal({ isOpen, onClose, children, className }: ModalPro
       >
         <div className="relative h-full">
           <button
-            className="absolute top-4 right-4 z-20 bg-secondary p-2 rounded-full hover:bg-error transition-all duration-200"
+            className="absolute top-14 right-4 z-20 bg-secondary p-2 rounded-full hover:bg-error transition-all duration-200"
             onClick={onClose}
             aria-label="Close Modal"
           >

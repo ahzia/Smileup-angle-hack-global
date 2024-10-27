@@ -1,9 +1,13 @@
 import { MdClose } from "react-icons/md";
 import { useEffect } from "react";
 
-export default function AIChat({ aiChatOpen, setAiChatOpen }) {
+interface AIChatProps {
+    aiChatOpen: boolean;
+    setAiChatOpen: (open: boolean) => void;
+}
 
-    const sendMessageToAgent = (message) => {
+export default function AIChat({ aiChatOpen, setAiChatOpen }: AIChatProps) {
+    const sendMessageToAgent = (message: string) => {
         const sessionId = sessionStorage.getItem('df-messenger-sessionID');
         fetch(
             `https://dialogflow.cloud.google.com/v1/cx/integrations/messenger/webhook/projects/hey-buddy-425118/agents/565449f1-c5bd-40c2-8457-295ce6ae892d/sessions/${sessionId}`,
@@ -23,7 +27,7 @@ export default function AIChat({ aiChatOpen, setAiChatOpen }) {
                         channel: 'DF_MESSENGER',
                     },
                 }),
-            },
+            }
         )
             .then((data) => {
                 console.log('Success:', data);
@@ -32,15 +36,17 @@ export default function AIChat({ aiChatOpen, setAiChatOpen }) {
                 console.error('Error:', error);
             });
     };
+
     useEffect(() => {
-        console.log("aicha", aiChatOpen)
         if (aiChatOpen) {
-            sendMessageToAgent(`{agent="smileUp", userName: "Ahmad", community: "lyf Funan"`);
+            sendMessageToAgent(`{agent="smileUp", userName: "Ahmad", community: "lyf Funan"}`);
         }
     }, [aiChatOpen]);
 
+    if (!aiChatOpen) return null;
+
     return (
-        aiChatOpen && (<div className="w-full h-[800px] relative z-20">
+        <div className="w-full h-[800px] relative z-50">
             <button
                 className="absolute top-4 right-4 z-20 bg-secondary p-2 rounded-full hover:bg-error transition-all duration-200"
                 onClick={() => setAiChatOpen(false)}
@@ -58,7 +64,6 @@ export default function AIChat({ aiChatOpen, setAiChatOpen }) {
                 <df-messenger-chat chat-title="SmileUp AI">
                 </df-messenger-chat>
             </df-messenger>
-
-        </div>)
-    )
+        </div>
+    );
 }
