@@ -75,7 +75,7 @@ export default function Messages() {
 
   return (
     <>
-      <div className="container">
+      <div className="container px-4 py-8 mx-auto">
         {!aiChatOpen && (
           <div className="h-[800px] flex flex-col justify-between">
             <div className="bg-mainBg h-screen p-4 text-textPrimary">
