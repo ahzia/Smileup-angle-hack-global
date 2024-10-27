@@ -17,7 +17,7 @@ export default function RewardModal({ isOpen, onClose, reward }: RewardModalProp
         <Modal
             isOpen={isOpen}
             onClose={onClose}
-            className="max-w-md !w-4/5 h-auto p-6 rounded-lg shadow-lg text-white relative"
+            className="max-w-md !w-4/5 !h-2/4 p-6 rounded-lg shadow-lg text-white relative"
         >
             <div className="relative h-48 w-full mb-4 rounded-lg overflow-hidden border-4 border-dashed border-[#FFF]">
                 <Image

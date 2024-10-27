@@ -1,4 +1,4 @@
-import { FaWindowClose } from "react-icons/fa";
+import { MdClose } from "react-icons/md";
 import { useEffect } from "react";
 
 export default function AIChat({ aiChatOpen, setAiChatOpen }) {
@@ -41,7 +41,13 @@ export default function AIChat({ aiChatOpen, setAiChatOpen }) {
 
     return (
         aiChatOpen && (<div className="w-full h-[800px] relative z-20">
-            <FaWindowClose className="fixed right-4 bottom-[850px] text-4xl text-[#20C997] rounded-full z-30" onClick={() => setAiChatOpen(false)} />
+            <button
+                className="absolute top-4 right-4 z-20 bg-secondary p-2 rounded-full hover:bg-error transition-all duration-200"
+                onClick={() => setAiChatOpen(false)}
+                aria-label="Close Modal"
+            >
+                <MdClose size={28} className="text-textPrimary" />
+            </button>
             <df-messenger
                 project-id="hey-buddy-425118"
                 agent-id="565449f1-c5bd-40c2-8457-295ce6ae892d"
