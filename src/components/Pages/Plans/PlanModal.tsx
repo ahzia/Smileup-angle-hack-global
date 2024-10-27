@@ -144,10 +144,10 @@ const PlanModal: React.FC<PlanModalProps> = ({ isOpen, onClose, plan }) => {
             <section className="mb-6">
               <div className="flex items-center space-x-2">
                 <MdEmojiEmotions
-                  className={plan.smiles >= 0 ? "text-success text-2xl" : "text-error text-2xl"}
+                  className={plan.is_free ? "text-highlight text-2xl" : "text-green-500 text-2xl"}
                 />
                 <h5 className="text-lg font-semibold">
-                  {plan.smiles} Smiles Given
+                  {plan.is_free ? `You Need ` : 'You reseive'} {plan.smiles} smiles
                 </h5>
               </div>
             </section>
