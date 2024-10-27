@@ -37,12 +37,12 @@
   --df-messenger-message-bot-background: linear-gradient(
     to bottom right,
     var(--secondary),
-    #6c63ff
+    #2b2f33
   );
   --df-messenger-message-user-background: linear-gradient(
     to bottom right,
-    #ff6900,
-    #ff9800
+    #242830,
+    #2b2f33
   );
   --df-messenger-message-user-font-color: white;
   --df-messenger-message-bot-writing-font-color: white; /* Dark text for writing indicator */

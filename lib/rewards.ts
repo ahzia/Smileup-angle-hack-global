@@ -14,15 +14,15 @@ import SunsetCruise from "../images/SunsetCruise.jpg";
 export const rewards: RewardsData = {
   rewards: {
     lyfDiscounts: {
-      title: "Discounts at LYF Funan",
+      title: "Discounts at lyf Funan",
       items: [
         {
           rewardId: "001",
           name: "☕️ Free Coffee at Bond Café",
-          description: "Enjoy a free coffee at the Bond Café inside LYF Funan.",
+          description: "Enjoy a free coffee at the Bond Café inside lyf Funan.",
           validity: "Valid until October 30, 2024",
           smilesCost: 50,
-          provider: "LYF Funan",
+          provider: "lyf Funan",
           location: "Bond Café, 1st Floor",
           type: "food",
           emoji: "☕️",
@@ -32,10 +32,10 @@ export const rewards: RewardsData = {
           rewardId: "002",
           name: "💻 10% Off Co-working Space Booking",
           description:
-            "Get 10% off your next booking at Connect, LYF Funan's co-working space.",
+            "Get 10% off your next booking at Connect, lyf Funan's co-working space.",
           validity: "Valid until November 15, 2024",
           smilesCost: 100,
-          provider: "LYF Funan",
+          provider: "lyf Funan",
           location: "Connect, 2nd Floor",
           type: "service",
           emoji: "💻",
@@ -45,10 +45,10 @@ export const rewards: RewardsData = {
           rewardId: "003",
           name: "🏋️‍♂️ Free Gym Pass",
           description:
-            "Access the Burn gym for free for one day. Stay active while at LYF!",
+            "Access the Burn gym for free for one day. Stay active while at lyf!",
           validity: "Valid until December 1, 2024",
           smilesCost: 150,
-          provider: "LYF Funan",
+          provider: "lyf Funan",
           location: "Burn Gym, 3rd Floor",
           type: "fitness",
           emoji: "🏋️‍♂️",
@@ -63,7 +63,7 @@ export const rewards: RewardsData = {
           rewardId: "004",
           name: "🍽️ 20% Off Dinner at Bento by Eight Café & Studio",
           description:
-            "Enjoy 20% off your dinner at Bento by Eight, located just minutes away from LYF Funan.",
+            "Enjoy 20% off your dinner at Bento by Eight, located just minutes away from lyf Funan.",
           validity: "Valid until October 31, 2024",
           smilesCost: 200,
           provider: "Bento by Eight Café & Studio",
@@ -76,7 +76,7 @@ export const rewards: RewardsData = {
           rewardId: "005",
           name: "🧘 Free Yoga Class at Yoga Movement",
           description:
-            "Attend a free yoga class at Yoga Movement, just around the corner from LYF Funan.",
+            "Attend a free yoga class at Yoga Movement, just around the corner from lyf Funan.",
           validity: "Valid until November 20, 2024",
           smilesCost: 250,
           provider: "Yoga Movement",
@@ -102,7 +102,7 @@ export const rewards: RewardsData = {
           rewardId: "007",
           name: "🖼️ Free Entry to National Gallery Singapore",
           description:
-            "Explore Southeast Asian art with free entry to the National Gallery Singapore, a short walk from LYF Funan.",
+            "Explore Southeast Asian art with free entry to the National Gallery Singapore, a short walk from lyf Funan.",
           validity: "Valid until December 15, 2024",
           smilesCost: 220,
           provider: "National Gallery Singapore",
@@ -115,7 +115,7 @@ export const rewards: RewardsData = {
           rewardId: "008",
           name: "🍜 15% Off at Ajumma’s Korean Restaurant",
           description:
-            "Enjoy 15% off your meal at Ajumma’s Korean Restaurant, a popular spot just near LYF Funan.",
+            "Enjoy 15% off your meal at Ajumma’s Korean Restaurant, a popular spot just near lyf Funan.",
           validity: "Valid until November 30, 2024",
           smilesCost: 170,
           provider: "Ajumma’s Korean Restaurant",
@@ -136,7 +136,7 @@ export const rewards: RewardsData = {
             "Join a private cooking session with a professional chef at Bond Kitchen. Learn to cook local dishes!",
           validity: "Valid until December 5, 2024",
           smilesCost: 300,
-          provider: "LYF Funan",
+          provider: "lyf Funan",
           location: "Bond Kitchen, 1st Floor",
           type: "experience",
           emoji: "👨‍🍳",
@@ -144,12 +144,12 @@ export const rewards: RewardsData = {
         },
         {
           rewardId: "010",
-          name: "👕 Exclusive LYF T-shirt",
+          name: "👕 Exclusive lyf T-shirt",
           description:
-            "Get an exclusive LYF-branded T-shirt, only available for community members.",
+            "Get an exclusive lyf-branded T-shirt, only available for community members.",
           validity: "Until stocks last",
           smilesCost: 120,
-          provider: "LYF Funan",
+          provider: "lyf Funan",
           location: "Reception Desk",
           type: "merchandise",
           emoji: "👕",
@@ -159,7 +159,7 @@ export const rewards: RewardsData = {
           rewardId: "011",
           name: "🚤 Sunset River Cruise",
           description:
-            "Enjoy a scenic sunset cruise on the river. A relaxing way to end your day at LYF.",
+            "Enjoy a scenic sunset cruise on the river. A relaxing way to end your day at lyf.",
           validity: "Valid until November 30, 2024",
           smilesCost: 350,
           provider: "Riverboat Tours",
