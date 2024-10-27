@@ -34,23 +34,23 @@ export default function PlanCard({ plan }: PlanCardProps) {
                 </div>
               </div>
             ) : (
-              <div className={`absolute flex top-2 right-2 bg-[#FFF] p-2 rounded-full shadow-lg border-4 ${plan.smiles >= 0 ? "border-green-500" : "border-orange-500"}`}>
-                <MdEmojiEmotions className={`text-lg font-bold ${plan.smiles >= 0 ? "text-green-500" : "text-orange-500"}`} />
-                <span className={`text-sm font-bold ${plan.smiles >= 0 ? "text-green-500" : "text-orange-500"}`}>
+              <div className={`absolute flex top-2 right-2 bg-[#FFF] p-2 rounded-full shadow-lg border-4 border-highlight`}>
+                <MdEmojiEmotions className='text-lg font-bold text-highlight' />
+                <span className={'text-sm font-bold text-highlight'}>
                   {plan.smiles}
                 </span>
               </div>
             )
           ) : (
-            <div className="absolute top-2 right-2 bg-[#FFF] p-2 rounded-full shadow-lg border-4 border-warning">
-              <p className="font-bold text-sm text-warning">{plan?.price}</p>
+            <div className="absolute top-2 right-2 bg-[#FFF] p-2 rounded-full shadow-lg border-4 border-green-500">
+              <p className="font-bold text-sm text-green-500">{plan?.price}</p>
             </div>
           )}
         </div>
         <h3 className="text-lg font-bold text-textPrimary">{plan.name}</h3>
         <div className="flex justify-between text-textSecondary">
           <div className="flex items-center space-x-1">
-            <MdLocationOn className="text-warning" />
+            <MdLocationOn className="text-highlight" />
             <p className="text-sm">{plan.location}</p>
           </div>
           <div className="flex items-center space-x-1">
