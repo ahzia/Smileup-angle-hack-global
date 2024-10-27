@@ -11,8 +11,7 @@ export default function MyProfile({ user }: { user: User }) {
 
   return (
     <>
-      <div className="container flex items-center justify-between mb-5 text-textPrimary">
-        <h1 className="text-2xl font-semibold">{user.name}</h1>
+      <div className="container flex items-center justify-end mb-10 text-textPrimary">
         <div className="relative flex items-center flex-col">
           <div className="relative" onClick={() => setModalOpen(true)}>
             <div

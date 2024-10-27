@@ -16,7 +16,7 @@ export default function PlansCategories({ categories }: PlansCategoriesProps) {
       {categories && categories.map((category) => (
         <div key={category.title}>
           <div className="flex justify-between items-center mb-5">
-            <h2 className="text-xl font-semibold text-textPrimary">
+            <h2 className="text-xl font-semibold text-primary">
               {category.title}
             </h2>
 

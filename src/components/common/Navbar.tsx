@@ -7,6 +7,7 @@ import { AiFillMessage } from "react-icons/ai";
 import { BiSolidGift } from "react-icons/bi";
 import { IoLogoGameControllerB } from "react-icons/io";
 import { FaUserFriends } from "react-icons/fa";
+import { FaGamepad } from "react-icons/fa";
 
 export default function Navbar() {
   const pathName = usePathname();
@@ -24,16 +25,16 @@ export default function Navbar() {
           <BiSolidGift />
         </NavItem>
 
-        <NavItem href="/messages" isActive={isActive("/messages")}>
-          <AiFillMessage />
-        </NavItem>
-
         <NavItem href="/missions" isActive={isActive("/missions")}>
           <IoLogoGameControllerB />
         </NavItem>
 
         <NavItem href="/meet" isActive={isActive("/meet")}>
           <FaUserFriends />
+        </NavItem>
+
+        <NavItem href="/messages" isActive={isActive("/messages")}>
+          <AiFillMessage />
         </NavItem>
       </ul>
     </nav>
