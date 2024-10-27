@@ -35,7 +35,7 @@ export default function AIChat({ aiChatOpen, setAiChatOpen }) {
     useEffect(() => {
         console.log("aicha", aiChatOpen)
         if (aiChatOpen) {
-            sendMessageToAgent(`{agent="smileUp", userName: "Ahmad", community: "LYF Funan"`);
+            sendMessageToAgent(`{agent="smileUp", userName: "Ahmad", community: "lyf Funan"`);
         }
     }, [aiChatOpen]);
 

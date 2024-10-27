@@ -7,6 +7,7 @@ import { AiFillMessage } from "react-icons/ai";
 import { BiSolidGift } from "react-icons/bi";
 import { IoLogoGameControllerB } from "react-icons/io";
 import { FaUserFriends } from "react-icons/fa";
+import { FaGamepad } from "react-icons/fa";
 
 export default function Navbar() {
   const pathName = usePathname();
