@@ -101,7 +101,9 @@
   --df-messenger-message-feedback-icon-font-color-active: var(
     --highlight
   ); /* Active color for the feedback icons */
-  --df-messenger-send-icon-color: var(--highlight); /* Color for the send icon */
+  --df-messenger-send-icon-color: var(
+    --highlight
+  ); /* Color for the send icon */
 }
 
 body {
@@ -109,6 +111,28 @@ body {
   color: var(--foreground);
 }
 
+/* Profile background styling with gradient overlay */
+.profile-background {
+  position: relative;
+  height: 250px; /* Adjust this height as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden; /* Ensures content doesn’t spill out */
+
+  /* Background image with gradient overlay */
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      /* Slight dark overlay at the top */ rgba(26, 16, 52, 1)
+        /* Fade smoothly into main background color */
+    ),
+    url("../../images/lyf-Funan-Singapore.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Additional utility classes */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
