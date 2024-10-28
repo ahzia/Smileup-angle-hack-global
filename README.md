@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 😊 SmileUp
 
-## Getting Started
+**SmileUp** is a gamified socializing app designed for lyf co-living spaces, aimed at fostering a stronger sense of community among residents. With SmileUp, residents can easily connect, plan activities, and earn community points ("Smiles") that reward their participation in the community.
 
-First, run the development server:
+## 🚀 Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Check out our live demo here: [🌐 Live Demo](https://smileup-angle-hack-global-five.vercel.app/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📚 Table of Contents
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [🌟 Key Features](#-key-features)
+- [🛠️ Tech Stack](#-tech-stack)
+- [🚀 Getting Started](#-getting-started)
+- [🧠 Usage](#-usage)
+- [🔮 Future Improvements](#-future-improvements)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#license)
+- [📞 Contact](#contact)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🌟 Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Activity Planning**: Easily create and join group activities and plans within the community. 🗓️
+- **Community Points ("Smiles")**: Earn points by participating in events, connecting with others, and completing daily and weekly missions. 🎉
+- **AI-Assisted Chat**: Get personalized recommendations for events and plans, powered by Google Vertex AI. 🤖
+- **Reward Voucher System**: Redeem community points for discounts and vouchers within lyf's network. 🎁
+- **Real-time Social Interaction**: Connect with residents, join hangouts, and chat with plan participants in real time. 💬
+- **Temporary Account for New Users**: Users receive a unique link for temporary access to the app, allowing exploration without account creation. 🔗
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Frontend**: Next.js, Tailwind CSS, TypeScript
+- **Backend**: Google Cloud Functions, Dialogflow (for AI chat)
+- **State Management**: Redux
+- **APIs**: Google Vertex AI, Dialogflow API
 
-## Deploy on Vercel
+## 🚀 Getting Started
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Follow these steps to get a local copy up and running:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clone the Repository:**
+
+    ```bash
+    git clone https://github.com/ahzia/Smileup-angle-hack-global.git
+    cd smileup
+    ```
+
+2. **Install Dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3. **Run the App:**
+
+    ```bash
+    npm run dev
+    ```
+
+    The app should now be running on `http://localhost:3000`.
+
+## 🧠 Usage
+
+1. **Create and Join Plans**: Explore and join activities happening within your lyf community. 🏡
+2. **Earn Smiles**: Participate in daily and weekly missions to earn Smiles and redeem vouchers. 🎖️
+3. **AI Chat**: Get personalized recommendations for events and connect with others. 🤝
+4. **Temporary Access**: Access SmileUp through a unique link to explore plans without creating an account. 🌐
+
+## 🔮 Future Improvements
+
+- **Enhanced Social Features**: Adding photo-sharing, reactions, and comment options in plan discussions. 📸
+- **Extended Rewards System**: Integrating more ways to earn and redeem Smiles. 💰
+- **Improved Community Insights**: Providing residents and lyf staff with insights on community engagement and activity trends. 📊
+- **Mobile App**: Developing a mobile version for improved accessibility and convenience. 📱
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the project.
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a pull request.
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 📞 Contact
+
+For questions, contact the SmileUp team.
