@@ -46,7 +46,7 @@ export default function AIChat({ aiChatOpen, setAiChatOpen }: AIChatProps) {
     if (!aiChatOpen) return null;
 
     return (
-        <div className="w-full h-[800px] relative z-50">
+        <div className="w-full h-[850px] relative z-50">
             <button
                 className="absolute top-4 right-4 z-20 bg-secondary p-2 rounded-full hover:bg-error transition-all duration-200"
                 onClick={() => setAiChatOpen(false)}
