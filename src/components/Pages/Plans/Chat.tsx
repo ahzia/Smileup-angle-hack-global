@@ -33,9 +33,9 @@ const GroupChat = ({ isOpen, onClose, plan }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="flex flex-col justify-between h-screen px-8 pt-16 backdrop-blur-md bg-[rgba(26,16,52,0.7)] text-white rounded-3xl shadow-2xl overflow-hidden">
-        <header className="bg-[rgba(46,42,90,0.8)] px-6 py-4 rounded-full shadow-lg flex flex-col items-center mb-6">
-          <h2 className="text-3xl font-bold text-highlight tracking-wide">Plan Group Chat</h2>
+      <div className="flex flex-col justify-between h-screen px-8 pt-14 backdrop-blur-md bg-[rgba(26,16,52,0.7)] text-white rounded-3xl shadow-2xl overflow-hidden">
+        <header className="flex flex-col mb-6 border-b border-secondary pb-4">
+          <h2 className="text-xl font-bold text-white tracking-wide">Plan Group Chat</h2>
           <p className="text-sm text-textSecondary mt-1">Connect with your group on this plan</p>
         </header>
 
@@ -45,20 +45,22 @@ const GroupChat = ({ isOpen, onClose, plan }) => {
             const sender = getUserById(msg.userId);
             const isUser = msg.userId === user.id;
             return (
-              <div key={msg.id} className={`flex ${isUser ? 'justify-end' : 'justify-start'} items-center relative`}>
+              <div key={msg.id} className={`flex ${isUser ? 'justify-end' : 'justify-start'} items-center space-x-2 relative`}>
                 {!isUser && sender && (
-                  <Image
-                    src={sender.profilePic}
-                    alt={sender.name}
-                    width={40}
-                    height={40}
-                    className="object-cover border-2 border-cardBgLight rounded-full h-10 w-10 mr-2"
-                  />
+                  <div className="w-10 h-10">
+                    <Image
+                      src={sender.profilePic}
+                      alt={sender.name}
+                      width={40}
+                      height={40}
+                      className="object-cover border-2 border-cardBgLight rounded-full h-10 w-10"
+                    />
+                  </div>
                 )}
                 <div
                   className={`relative max-w-xs px-4 py-3 rounded-2xl shadow-xl text-textPrimary ${isUser
-                    ? 'bg-gradient-to-br from-[#FF6900] to-[#FF9800] text-white shadow-orange-500/30'
-                    : 'bg-gradient-to-br from-secondary to-[#6c63ff] shadow-indigo-700/30'
+                    ? 'bg-gradient-to-br from-[#242830] to-[#2b2f33]'
+                    : 'bg-gradient-to-br from-secondary to-[#2b2f33]'
                     }`}
                 >
                   <p className="font-medium mb-1">{isUser ? 'You' : sender?.name}</p>

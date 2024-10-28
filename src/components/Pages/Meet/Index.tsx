@@ -14,7 +14,7 @@ const MeetPage: React.FC = () => {
   };
 
   return (
-    <div className="container flex flex-col items-center justify-center bg-mainBg text-white">
+    <div className="container flex flex-col items-center justify-center bg-mainBg text-white px-4 py-8">
       {/* Heading Section */}
       <header className="mb-8 text-center">
         <h1 className="text-4xl font-bold text-highlight mb-2">
