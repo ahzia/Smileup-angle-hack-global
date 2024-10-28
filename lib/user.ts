@@ -1,15 +1,16 @@
 import ahmadPic from "../images/Users/Ahmadzia.png";
 import tamimPic from "../images/Users/tamim.jpeg";
 import pushkarPic from "../images/Users/pushkar.jpg";
-import fistonPic from "../images/Users/fiston.jpeg"
+import fistonPic from "../images/Users/fiston.jpeg";
+import juliaPic from "../images/Users/pretty.jpg";
 
 
 export const users = [
   {
     id: 1,
-    name: "Alice Johnson",
+    name: "Ahmed Zia",
     age: 26,
-    email: "alice.johnson@example.com",
+    email: "ahmed.zia@gmail.com",
     profilePic: ahmadPic,
     interests: ["Yoga", "Photography", "Cooking"],
     residency: "lyf Funan Singapore",
@@ -19,47 +20,47 @@ export const users = [
   },
   {
     id: 2,
-    name: "Bob Smith",
+    name: "Pushkar sareen",
     age: 30,
-    email: "bob.smith@example.com",
+    email: "sareenpushkar@gmail.com",
     profilePic: pushkarPic,
-    interests: ["Cycling", "Programming", "Movies"],
+    interests: ["Chess", "Football", "coding"],
     residency: "lyf Funan Singapore",
     smiles: 38,
-    bio: "Tech geek who loves cycling and binge-watching movies on weekends."
+    bio: "Tech geek who loves chess and binge-watching movies on weekends."
   },
   {
     id: 3,
-    name: "john willson",
+    name: "Fiston",
     age: 33,
-    email: "bob.smith@example.com",
-    profilePic: tamimPic,
+    email: "Fiston@gmail.com",
+    profilePic: fistonPic,
     interests: ["Cycling", "Programming", "Movies"],
     residency: "lyf Funan Singapore",
     smiles: 38,
     bio: "Tech geek who loves cycling and binge-watching movies on weekends."
   },  {
     id: 4,
-    name: "jayse joseph",
+    name: "Julia",
     age: 28,
-    email: "bob.smith@example.com",
-    profilePic: fistonPic,
-    interests: ["Cycling", "Programming", "Movies"],
+    email: "jualia@gmail.com",
+    profilePic: juliaPic,
+    interests: ["Makeover", "Dancing", "Writing"],
     residency: "lyf Funan Singapore",
     smiles: 38,
-    bio: "Tech geek who loves cycling and binge-watching movies on weekends.",
+    bio: "A Beautiful Girl who loves doing makeover and writing stories and poems",
     joinedPlans: [3, 4]
   },
   {
     id: 3,
-    name: "Charlie Brown",
+    name: "Tamim",
     age: 28,
-    email: "charlie@example.com",
-    profilePic: ahmadPic,
-    interests: ["Programming", "Movies"],
+    email: "tamim@gmail.com",
+    profilePic: tamimPic,
+    interests: ["Boxing", "dancing", "cricket"],
     residency: "lyf Funan Singapore",
     smiles: 38,
-    bio: "Tech geek who loves cycling and binge-watching movies on weekends.",
+    bio: "A Guy who likes to do box and dance belle and play cricket",
     joinedPlans: [2, 4]
   }
 ];
@@ -68,10 +69,10 @@ export const users = [
 
 export const userData = {
   id: 4,
-  name: "John Doe",
+  name: "Pushkar",
   age: 30,
-  email: "example@gmail.com",
-  profilePic: tamimPic,
+  email: "sareenpushkar@gmail.com",
+  profilePic: pushkarPic,
   smiles: 100,
   bio: 'Digital Nomad | Travel Enthusiast',
   friends: 12,
